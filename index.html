@@ -1,1294 +1,1222 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <title>Prabal Pandey</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="static/css/styles.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'> 
-  <script src="https://code.iconify.design/2/2.2.0/iconify.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
-  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prabal Pandey</title>
+<meta name="description" content="Senior Software Engineer building C#/.NET 8, RabbitMQ, PostgreSQL and Angular systems for video analytics platforms running on 200+ servers and 1,000+ cameras.">
+<meta property="og:title" content="Prabal Pandey, Senior Software Engineer">
+<meta property="og:description" content="I build the backends behind 1,000+ live cameras. C#/.NET 8, ASP.NET Core, RabbitMQ, PostgreSQL/TimescaleDB and Angular.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230A0E13'/%3E%3Crect x='8.5' y='8.5' width='15' height='15' fill='none' stroke='%23F0A33A' stroke-width='2.5'/%3E%3C/svg%3E">
+<script>try{var pt=localStorage.getItem('pp-theme');if(pt==='dark'||pt==='light')document.documentElement.setAttribute('data-theme',pt)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F1F2EE;
+  --surface:#FAFAF7;
+  --ink:#141A21;
+  --ink-2:#4C5661;
+  --ink-3:#6E7883;
+  --line:#D5D9D1;
+  --line-2:#E3E6DF;
+  --chip:#E7E9E3;
+  --accent:#A35C00;
+  --amber:#F0A33A;
+  --amber-wash:rgba(240,163,58,.2);
+  --ok:#1F8A56;
+  --screen:#0A0E13;
+  --screen-2:#10161D;
+  --screen-ink:#DCE4EB;
+  --screen-dim:#7F8D9A;
+  --screen-edge:#2A3542;
+  --rec:#E5484D;
+  --shadow:0 1px 0 rgba(20,26,33,.05), 0 22px 44px -26px rgba(20,26,33,.45);
+  --display:"Big Shoulders Display","Arial Narrow","Roboto Condensed",sans-serif;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"Cascadia Code",Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1217;
+    --surface:#141920;
+    --ink:#E4E9EE;
+    --ink-2:#A3AEB9;
+    --ink-3:#7A8692;
+    --line:#26303A;
+    --line-2:#1D242C;
+    --chip:#1B222A;
+    --accent:#F2A541;
+    --amber-wash:rgba(240,163,58,.16);
+    --ok:#3DBE7B;
+    --screen:#05070A;
+    --screen-2:#0C1117;
+    --shadow:0 0 0 1px #1E262F, 0 24px 48px -28px rgba(0,0,0,.8);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1217;
+  --surface:#141920;
+  --ink:#E4E9EE;
+  --ink-2:#A3AEB9;
+  --ink-3:#7A8692;
+  --line:#26303A;
+  --line-2:#1D242C;
+  --chip:#1B222A;
+  --accent:#F2A541;
+  --amber-wash:rgba(240,163,58,.16);
+  --ok:#3DBE7B;
+  --screen:#05070A;
+  --screen-2:#0C1117;
+  --shadow:0 0 0 1px #1E262F, 0 24px 48px -28px rgba(0,0,0,.8);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 1.0625rem/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1160px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+section[id]{scroll-margin-top:72px}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--ground);background:color-mix(in srgb,var(--ground) 90%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--amber);transform:scaleX(var(--p,0));transform-origin:0 50%}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:62px}
+.mark{display:flex;align-items:center;gap:10px;font:800 1.4rem/1 var(--display);letter-spacing:.03em;text-transform:uppercase;text-decoration:none}
+.mark i{width:12px;height:12px;border:2px solid var(--amber);display:inline-block}
+.nav{display:flex;align-items:center;gap:clamp(12px,2.2vw,26px)}
+.nav a{font:500 .92rem/1 var(--sans);color:var(--ink-2);text-decoration:none}
+.nav a:hover{color:var(--ink)}
+.nav a.cta{color:var(--ink);border:1px solid var(--ink);padding:10px 14px;border-radius:2px}
+.nav a.cta:hover{background:var(--ink);color:var(--ground)}
+.theme{display:inline-grid;place-items:center;width:38px;height:38px;padding:0;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--ink);cursor:pointer}
+.theme:hover{border-color:var(--ink)}
+.theme svg{width:18px;height:18px}
+@media (max-width:680px){.nav a:not(.cta){display:none}}
+
+/* Shared type */
+.eyebrow{margin:0 0 16px;font:500 .74rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1,h2,h3{text-wrap:balance}
+h2{margin:0;font:800 clamp(2.3rem,4.8vw,3.7rem)/.94 var(--display);text-transform:uppercase;letter-spacing:.005em}
+.ext::after{content:" \2197";font-family:var(--sans)}
+
+/* Hero */
+.hero{padding-block:clamp(40px,7vw,92px) clamp(56px,8vw,104px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(36px,5vw,64px);align-items:center}
+@media (max-width:920px){.hero .wrap{grid-template-columns:1fr}}
+h1{margin:0 0 24px;font:800 clamp(3rem,7vw,5.5rem)/.9 var(--display);text-transform:uppercase;letter-spacing:.002em}
+h1 em{font-style:normal;color:var(--accent)}
+.lede{margin:0 0 30px;max-width:34em;font-size:clamp(1.05rem,1.35vw,1.17rem);color:var(--ink-2)}
+.lede strong{color:var(--ink);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 20px;border:1px solid var(--ink);border-radius:2px;font:600 .96rem/1 var(--sans);text-decoration:none;transition:background-color .15s,color .15s,border-color .15s}
+.btn.primary{background:var(--ink);color:var(--ground)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:var(--ground)}
+.btn.ghost:hover{background:var(--chip)}
+.links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;font:500 .8rem/1 var(--mono);letter-spacing:.03em}
+.links a{color:var(--ink-2);text-decoration:none;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.links a:hover{color:var(--ink);border-color:var(--accent)}
+
+/* Monitor */
+.monitor{margin:0;padding:10px;background:var(--screen);border-radius:6px;box-shadow:var(--shadow);color:var(--screen-ink)}
+.monitor :focus-visible{outline-color:var(--amber)}
+.monitor-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 14px;padding:4px 4px 10px;font:500 .68rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--screen-dim)}
+.rec{display:inline-flex;align-items:center;gap:7px;color:var(--screen-ink)}
+.rec::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rec);animation:blink 1.6s steps(1) infinite}
+@keyframes blink{50%{opacity:.25}}
+#tc{font-variant-numeric:tabular-nums}
+.wall{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.feed{position:relative;margin:0;aspect-ratio:16/11;max-width:100%;overflow:hidden;background:var(--screen-2)}
+.feed canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.feed::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(to top,rgba(5,7,10,.94) 0%,rgba(5,7,10,.6) 36%,rgba(5,7,10,0) 66%)}
+.feed figcaption{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:space-between;padding:10px 12px 11px;pointer-events:none}
+.ch{display:flex;justify-content:space-between;gap:8px;font:500 .62rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--screen-dim)}
+.ch b{font-weight:500;color:var(--screen-ink)}
+.ch em{font-style:normal;color:var(--amber)}
+.read{display:flex;flex-direction:column;gap:5px}
+.big{font:800 clamp(1.55rem,3.1vw,2.3rem)/.95 var(--display);letter-spacing:.01em;color:#fff}
+.was{font:400 .66rem/1.3 var(--mono);color:var(--screen-dim)}
+.open{position:absolute;inset:0;z-index:2;display:grid;place-items:center;width:100%;height:100%;padding:0;border:0;background:transparent;color:inherit;cursor:pointer}
+.open:hover{box-shadow:inset 0 0 0 1px rgba(240,163,58,.75)}
+.open:focus-visible{outline:2px solid var(--amber);outline-offset:-2px;border-radius:0}
+.open span{padding:7px 11px;border:1px solid var(--amber);border-radius:2px;background:rgba(5,7,10,.82);font:500 .64rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber);opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s}
+.open:hover span,.open:focus-visible span{opacity:1;transform:none}
+.wall.solo{display:flex;flex-direction:column}
+.wall.solo .feed{display:none}
+.wall.solo .feed.on{display:block;flex:1 1 auto;aspect-ratio:auto;min-height:130px}
+.wall.solo .feed.on::after,.wall.solo .feed.on .read,.wall.solo .feed.on .open{display:none}
+.solo-panel{display:grid;gap:8px;padding:12px 6px 4px}
+.solo-panel h3{margin:0;font:800 clamp(1.3rem,2.3vw,1.7rem)/1 var(--display);letter-spacing:.01em;text-transform:uppercase;color:#fff}
+.solo-panel p{margin:0;max-width:52em;font-size:.86rem;line-height:1.45;color:var(--screen-ink)}
+.solo-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:2px}
+.seg{display:inline-flex;border:1px solid var(--screen-edge);border-radius:2px}
+.seg button,.back{padding:8px 12px;border:0;background:transparent;color:var(--screen-dim);font:500 .66rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--amber);color:#1A1205}
+.seg button:not([aria-pressed="true"]):hover,.back:hover{color:#fff}
+.readout{flex:1 1 220px;font:500 .7rem/1.35 var(--mono);color:var(--amber);font-variant-numeric:tabular-nums}
+.back{margin-left:auto;border:1px solid var(--screen-edge);border-radius:2px;color:var(--screen-ink)}
+.monitor-foot{padding:10px 4px 2px;font:400 .66rem/1.4 var(--mono);letter-spacing:.03em;color:var(--screen-dim)}
+@media (max-width:460px){
+  .feed{aspect-ratio:4/3}
+  .feed figcaption{padding:8px 9px 9px}
+  .ch{font-size:.56rem;letter-spacing:.06em}
+  .was{font-size:.6rem}
+  .monitor-bar .wall-id{display:none}
+}
+
+/* Sections */
+.section{padding-block:clamp(64px,9vw,120px);border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:20px 56px;align-items:end;margin-bottom:clamp(36px,5vw,60px)}
+.sec-head > p{margin:0;max-width:40em;color:var(--ink-2)}
+@media (max-width:820px){.sec-head{grid-template-columns:1fr}}
+
+/* Experience */
+.role{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:16px 56px;padding-bottom:44px}
+.role + .role{padding-top:44px;border-top:1px solid var(--line)}
+.role:last-child{padding-bottom:0}
+.role-meta{position:sticky;top:calc(env(safe-area-inset-top,0px) + 88px);align-self:start}
+.role-meta h3{margin:0 0 8px;font:600 1.25rem/1.25 var(--sans)}
+.role-meta p{margin:0;font:400 .8rem/1.6 var(--mono);color:var(--ink-2)}
+.pill{display:inline-block;margin-top:12px;padding:5px 8px;border:1px solid var(--accent);border-radius:2px;font:500 .66rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+@media (max-width:820px){.role{grid-template-columns:1fr}.role-meta{position:static}}
+.wins{margin:0;padding:0;list-style:none}
+.win{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:8px 32px;padding-block:22px;border-top:1px solid var(--line-2)}
+.win:first-child{padding-top:2px;border-top:0}
+.win:last-child{padding-bottom:0}
+@media (max-width:560px){.win{grid-template-columns:1fr}}
+.num{display:block;font:800 clamp(1.9rem,3vw,2.4rem)/1 var(--display);letter-spacing:.01em}
+.from{display:block;margin-top:6px;font:400 .72rem/1.4 var(--mono);color:var(--ink-3)}
+.ba{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:5px 8px;max-width:180px;margin-top:12px}
+.ba span{font:500 .58rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.ba i{display:block;width:var(--w);height:6px;border-radius:1px;background:var(--line)}
+.ba i.now{background:var(--amber)}
+.win p{margin:0;color:var(--ink-2)}
+.win p strong{font-weight:600;color:var(--ink)}
+
+/* Projects */
+.featured{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.more{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:20px}
+@media (max-width:920px){.featured,.more{grid-template-columns:1fr}}
+.proj{display:flex;flex-direction:column;gap:18px;padding:clamp(20px,3vw,32px);background:var(--surface);border:1px solid var(--line);border-radius:4px;transition:border-color .2s,transform .2s}
+.proj:hover{border-color:var(--amber);transform:translateY(-2px)}
+.proj-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px 14px}
+.proj h3{margin:0;font:800 clamp(1.9rem,3vw,2.5rem)/1 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.more .proj h3{font-size:1.75rem}
+.status{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border:1px solid var(--line);border-radius:2px;font:500 .66rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink-3)}
+.status.live::before,.status.done::before{background:var(--ok)}
+.status.wip::before{background:var(--amber)}
+.tagline{margin:0;font-size:1.12rem;font-weight:500;line-height:1.45;color:var(--ink)}
+.proj p{margin:0;color:var(--ink-2)}
+.stats{font:400 .74rem/1.4 var(--mono);color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.chips li{padding:6px 8px;background:var(--chip);border-radius:2px;font:400 .72rem/1 var(--mono);color:var(--ink-2)}
+.proj-links{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:auto;padding-top:4px}
+.proj-links a{padding-bottom:3px;border-bottom:1.5px solid var(--accent);font:600 .92rem/1 var(--sans);text-decoration:none}
+.proj-links a:hover{color:var(--accent)}
+.see-all{margin:28px 0 0;color:var(--ink-2)}
+.see-all a{font-weight:600;color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:3px}
+
+.pipe{display:flex;flex-wrap:wrap;gap:6px 4px;margin:0;padding:0;list-style:none;font:500 .72rem/1 var(--mono)}
+.pipe li{display:flex;align-items:center;gap:4px}
+.pipe li + li::before{content:"\2192";color:var(--ink-3)}
+.pipe span{padding:7px 8px;background:var(--ground);border:1px solid var(--line);border-radius:2px}
+.pipe li:nth-child(5) span{border-color:var(--amber)}
+.scale-fig{margin:0}
+.scale{display:block;width:100%;height:auto;max-width:100%}
+.scale text{font-family:var(--mono);font-size:10px;fill:var(--ink-3)}
+.scale .lbl{fill:var(--ink-2)}
+.scale .strong{fill:var(--ink);font-weight:500}
+.scale .axis{stroke:var(--line);stroke-width:1}
+.scale .tick{stroke:var(--ink-3);stroke-width:1}
+.scale .band-diff{fill:var(--ink-3);opacity:.4}
+.scale .band-same{fill:var(--amber)}
+.scale .thr{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:3 3}
+.scale-fig figcaption{margin-top:6px;font:400 .72rem/1.45 var(--mono);color:var(--ink-3)}
+
+.modes{margin:0;padding:0;list-style:none;border:1px solid var(--line);border-radius:2px}
+.modes li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:12px 14px;border-top:1px solid var(--line)}
+.modes li:first-child{border-top:0}
+.modes b{display:block;font-size:.96rem;font-weight:600}
+.modes span{display:block;margin-top:3px;font:400 .74rem/1.45 var(--mono);color:var(--ink-3)}
+.modes .mh{padding-block:9px;background:var(--ground)}
+.modes .mh span{margin:0;font:500 .64rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.load{display:flex;gap:3px}
+.load i{width:8px;height:18px;background:var(--line);border-radius:1px}
+.load[data-level="1"] i:nth-child(-n+1),
+.load[data-level="2"] i:nth-child(-n+2),
+.load[data-level="3"] i:nth-child(-n+3){background:var(--amber)}
+
+/* Stack */
+.spec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px;margin:0}
+.spec > div{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:16px;padding-block:16px;border-top:1px solid var(--line)}
+.spec > div.full{grid-column:1 / -1;border-bottom:1px solid var(--line)}
+.spec dt{margin:0;padding-top:3px;font:500 .7rem/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.spec dd{margin:0}
+@media (max-width:820px){.spec{grid-template-columns:1fr}}
+@media (max-width:460px){.spec > div{grid-template-columns:1fr;gap:4px}}
+
+/* About */
+.about{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+@media (max-width:760px){.about{grid-template-columns:1fr}.portrait{max-width:320px}}
+.portrait{margin:0;overflow:hidden;background:var(--screen);border-radius:4px;box-shadow:var(--shadow)}
+.shot{position:relative}
+.shot img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.fbox{position:absolute;left:40.5%;top:29.5%;width:40%;height:39%;border:2px solid var(--amber)}
+.fbox span{position:absolute;left:-2px;bottom:100%;padding:4px 6px;background:var(--amber);color:#1A1205;font:600 .6rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.lm{position:absolute;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--amber)}
+.portrait:hover .fbox{animation:lock .5s cubic-bezier(.2,.8,.2,1)}
+.portrait:hover .lm{animation:pop .45s .3s cubic-bezier(.2,.8,.2,1) both}
+@keyframes lock{from{transform:scale(1.2);opacity:0}to{transform:none;opacity:1}}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.8)}100%{transform:scale(1)}}
+.portrait figcaption{padding:10px 12px;font:400 .68rem/1.5 var(--mono);color:var(--screen-dim)}
+.prose p{margin:0 0 18px;max-width:38em;font-size:1.1rem;color:var(--ink-2)}
+.prose p:first-child{color:var(--ink)}
+.facts{display:grid;margin:30px 0 0;padding:0;list-style:none}
+.facts li{display:grid;grid-template-columns:minmax(0,140px) minmax(0,1fr);gap:16px;padding-block:12px;border-top:1px solid var(--line)}
+.facts b{padding-top:3px;font:500 .7rem/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+@media (max-width:460px){.facts li{grid-template-columns:1fr;gap:2px}}
+
+/* Playback timeline */
+.playback{margin-top:clamp(48px,7vw,80px);padding:clamp(18px,3vw,30px);background:var(--surface);border:1px solid var(--line);border-radius:4px}
+.pb-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px;margin-bottom:20px}
+.pb-top .eyebrow{margin:0}
+.pb-now{font:500 .8rem/1 var(--mono);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.pb-card{min-height:96px;margin-bottom:26px}
+.pb-date{display:block;margin-bottom:8px;font:500 .72rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.pb-title{display:block;font:800 clamp(1.7rem,3.2vw,2.4rem)/1 var(--display);letter-spacing:.01em;text-transform:uppercase}
+.pb-text{display:block;margin-top:8px;color:var(--ink-2)}
+.pb-rail{position:relative;height:46px;margin:0 6px 34px;background:var(--ground);border:1px solid var(--line);border-radius:2px}
+.pb-rail:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:5px}
+.pb-fill{position:absolute;left:0;top:0;bottom:0;background:var(--amber-wash)}
+.pb-yr{position:absolute;top:0;bottom:0;width:1px;background:var(--line)}
+.pb-yr span{position:absolute;top:calc(100% + 9px);left:0;transform:translateX(-50%);font:400 .68rem/1 var(--mono);color:var(--ink-3)}
+.pb-ev{position:absolute;top:7px;bottom:7px;width:2px;margin-left:-1px;background:var(--accent)}
+.pb-ev::before{content:"";position:absolute;top:0;left:50%;width:8px;height:8px;background:var(--accent);transform:translateX(-50%)}
+.pb-ev.on{width:3px;margin-left:-1.5px;background:var(--ink)}
+.pb-ev.on::before{width:11px;height:11px;background:var(--ink)}
+.pb-head{position:absolute;top:-7px;bottom:-7px;width:2px;margin-left:-1px;background:var(--ink);pointer-events:none}
+.pb-head::before{content:"";position:absolute;top:-3px;left:50%;width:10px;height:10px;background:var(--ink);transform:translateX(-50%) rotate(45deg)}
+.pb-rail input{position:absolute;left:0;top:-10px;width:100%;height:calc(100% + 20px);margin:0;opacity:0;cursor:ew-resize}
+.pb-ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.pb-ctrl button{display:inline-flex;align-items:center;gap:7px;padding:10px 13px;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--ink);font:500 .72rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.pb-ctrl button:hover{border-color:var(--ink)}
+.pb-ctrl #pbPlay{background:var(--ink);border-color:var(--ink);color:var(--ground)}
+.pb-hint{margin-left:auto;font:400 .7rem/1.4 var(--mono);color:var(--ink-3)}
+
+/* Contact */
+.contact p.intro{margin:0 0 28px;max-width:38em;color:var(--ink-2)}
+.mail-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px 18px}
+.mail{display:inline-block;font:800 clamp(1.45rem,5.4vw,4.2rem)/1.05 var(--display);letter-spacing:.01em;text-decoration:none;overflow-wrap:anywhere;border-bottom:3px solid var(--amber);padding-bottom:4px}
+.mail:hover{color:var(--accent)}
+.copy{margin-bottom:6px;padding:10px 14px;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--ink);font:500 .72rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.copy:hover{border-color:var(--ink)}
+.reach{display:flex;flex-wrap:wrap;gap:12px 28px;margin:36px 0 0;padding:0;list-style:none}
+.reach a{font:500 .9rem/1 var(--mono);color:var(--ink-2);text-decoration:none;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.reach a:hover{color:var(--ink);border-color:var(--accent)}
+
+/* Footer */
+.foot{padding-block:28px 40px;border-top:1px solid var(--line);font:400 .74rem/1.5 var(--mono);color:var(--ink-3)}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+.foot a{color:var(--ink-2)}
+#localtime{font-variant-numeric:tabular-nums}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .rec::before,.portrait:hover .fbox,.portrait:hover .lm{animation:none}
+  .btn,.proj,.open span{transition:none}
+  .proj:hover{transform:none}
+}
+</style>
 </head>
 <body>
 
-<nav class="navbar bg-dark navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a id="prabal" class="navbar-brand" href="#">Prabal Pandey</a>
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Prabal Pandey, back to top"><i aria-hidden="true"></i>Prabal Pandey</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#stack">Stack</a>
+      <a href="#about">About</a>
+      <button type="button" class="theme" id="themeBtn" aria-label="Switch theme" title="Switch theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
       </button>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero" aria-label="Introduction">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Senior Software Engineer · I2V Systems · Gurugram</p>
+      <h1>I build the backends behind <em>1,000+ live cameras.</em></h1>
+      <p class="lede">Four years of <strong>C#/.NET 8, ASP.NET Core, RabbitMQ, PostgreSQL/TimescaleDB and Angular</strong> for video analytics platforms running on 200+ servers. Most of the job is keeping up: events arrive faster than anyone planned for, tables grow to tens of millions of rows, and the operator at the video wall still needs the answer now.</p>
+      <div class="actions">
+        <a class="btn primary" href="#work">See the work</a>
+        <a class="btn ghost" href="mailto:prabal.pandey.prabal@gmail.com">Email me</a>
+      </div>
+      <div class="links">
+        <a class="ext" href="https://github.com/kingpingx" target="_blank" rel="noopener">GitHub</a>
+        <a class="ext" href="https://www.linkedin.com/in/iamprabal" target="_blank" rel="noopener">LinkedIn</a>
+        <!--repo-only--><a class="ext" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a><!--/repo-only-->
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="underline" href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <!-- <li><a href="#blog">Blog</a></li> -->
-        <li><a href="#contact">Contact</a></li>
+
+    <figure class="monitor" aria-label="Four results from my work, shown as camera feeds on a video wall">
+      <div class="monitor-bar">
+        <span class="rec">Rec</span>
+        <span class="wall-id" id="wallId">Wall 01 · 2×2</span>
+        <span id="tc">IST</span>
+      </div>
+      <div class="wall">
+        <figure class="feed" data-scene="queue" data-cam="CAM 01">
+          <canvas aria-hidden="true"></canvas>
+          <figcaption>
+            <span class="ch"><span><b>CAM 01</b> RabbitMQ</span><em>▲ 20×</em></span>
+            <span class="read"><span class="big">500+ ev/s</span><span class="was">from 20–30 · per-event queues</span></span>
+          </figcaption>
+          <button type="button" class="open" aria-label="Open the RabbitMQ simulation"><span>Run simulation</span></button>
+        </figure>
+        <figure class="feed" data-scene="export" data-cam="CAM 02">
+          <canvas aria-hidden="true"></canvas>
+          <figcaption>
+            <span class="ch"><span><b>CAM 02</b> Exports</span><em>▲ 12×</em></span>
+            <span class="read"><span class="big">Under 1 min</span><span class="was">from ~12 min · 100K+ rows</span></span>
+          </figcaption>
+          <button type="button" class="open" aria-label="Open the report export simulation"><span>Run simulation</span></button>
+        </figure>
+        <figure class="feed" data-scene="search" data-cam="CAM 03">
+          <canvas aria-hidden="true"></canvas>
+          <figcaption>
+            <span class="ch"><span><b>CAM 03</b> Search</span><em>▲ 10×</em></span>
+            <span class="read"><span class="big">Under 3 s</span><span class="was">from 30 s · 40–50M events</span></span>
+          </figcaption>
+          <button type="button" class="open" aria-label="Open the event search simulation"><span>Run simulation</span></button>
+        </figure>
+        <figure class="feed" data-scene="fleet" data-cam="CAM 04">
+          <canvas aria-hidden="true"></canvas>
+          <figcaption>
+            <span class="ch"><span><b>CAM 04</b> Fleet</span><em>Live</em></span>
+            <span class="read"><span class="big">1,000+</span><span class="was">cameras on 200+ servers</span></span>
+          </figcaption>
+          <button type="button" class="open" aria-label="Open the fleet view"><span>Open fleet view</span></button>
+        </figure>
+        <div class="solo-panel" id="solo" hidden>
+          <h3 id="soloTitle"></h3>
+          <p id="soloText"></p>
+          <div class="solo-row">
+            <div class="seg" id="soloSeg" role="group" aria-label="Show the system">
+              <button type="button" data-mode="before" aria-pressed="false">Before</button>
+              <button type="button" data-mode="after" aria-pressed="true">After</button>
+            </div>
+            <span class="readout" id="soloRead"></span>
+            <button type="button" class="back" id="soloBack">Back to wall</button>
+          </div>
+        </div>
+      </div>
+      <figcaption class="monitor-foot" id="wallFoot">Select a feed to run its simulation. The numbers are from production at I2V Systems.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Experience</p>
+        <h2>Four years at I2V Systems</h2>
+      </div>
+      <p>I2V builds video surveillance and analytics for public-sector deployments: VMS, ANPR, face recognition, traffic management (ITMS) and integrated city command centres (ICCC). I joined as a Software Engineer in August 2022 and became Senior in April 2026.</p>
+    </div>
+
+    <div class="role">
+      <div class="role-meta">
+        <h3>Senior Software Engineer</h3>
+        <p>Apr 2026 – Present<br>Gurugram, India</p>
+        <span class="pill">Current</span>
+      </div>
+      <ul class="wins">
+        <li class="win">
+          <div><span class="num">7 modules</span><span class="from">was one monolith</span></div>
+          <p><strong>Led the Clean Architecture migration</strong> of the ASP.NET Core analytics monolith into seven modules (Events, FRS, Actions, Dashboard, Report, Logs, Schedule), each with its own EF Core migrations and architecture tests to hold the boundaries.</p>
+        </li>
+        <li class="win">
+          <div>
+            <span class="num">Under 1 min</span><span class="from">was ~12 min</span>
+            <div class="ba" role="img" aria-label="Export time: about 12 minutes before, under 1 minute after"><span>was</span><i style="--w:100%"></i><span>now</span><i class="now" style="--w:8.3%"></i></div>
+          </div>
+          <p><strong>Made PostgreSQL report exports 12× faster</strong> on 100K+ records across 10 report types, using streaming reads and bounded parallelism.</p>
+        </li>
+        <li class="win">
+          <div><span class="num">3 targets</span><span class="from">Windows · Linux · Docker</span></div>
+          <p><strong>Own cross-platform releases</strong> from GitHub Actions CI/CD through to public-sector sign-off. I lead code reviews and Grafana-based incident triage, and mentor 4 junior engineers in Agile/Scrum.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-meta">
+        <h3>Software Engineer</h3>
+        <p>Aug 2022 – Apr 2026<br>Gurugram, India</p>
+      </div>
+      <ul class="wins">
+        <li class="win">
+          <div>
+            <span class="num">Under 3 s</span><span class="from">was 30 s</span>
+            <div class="ba" role="img" aria-label="Search time: 30 seconds before, under 3 seconds after"><span>was</span><i style="--w:100%"></i><span>now</span><i class="now" style="--w:10%"></i></div>
+          </div>
+          <p><strong>Rebuilt the TimescaleDB event store</strong> holding 40–50M events. I merged the per-type tables into one hypertable with JSONB and BRIN indexes, and search went from 30 seconds to under 3.</p>
+        </li>
+        <li class="win">
+          <div>
+            <span class="num">500+ ev/s</span><span class="from">was 20–30 ev/s</span>
+            <div class="ba" role="img" aria-label="Throughput: 20 to 30 events per second before, 500+ after"><span>was</span><i style="--w:5%"></i><span>now</span><i class="now" style="--w:100%"></i></div>
+          </div>
+          <p><strong>Scaled RabbitMQ event processing 20×</strong> by splitting one mixed queue into per-event queues with independent consumers and dead-letter queues. The daily broker restarts stopped.</p>
+        </li>
+        <li class="win">
+          <div><span class="num">6 actions</span><span class="from">attach to any event</span></div>
+          <p><strong>Designed a composable action pipeline</strong> that attaches any of 6 action types to any event, so third-party integrations like DigiFort VMS and MQTT alerting ship as configuration instead of code.</p>
+        </li>
+        <li class="win">
+          <div><span class="num">Angular 18</span><span class="from">from 12 · 4 npm libraries</span></div>
+          <p><strong>Built the dashboard platform</strong>: live video walls and 4 real-time dashboards on a PostgreSQL query engine with group-by and joins. I took the apps from Angular 12 to 18, published 4 npm libraries, and moved the backend from .NET 6 to .NET 8.</p>
+        </li>
+        <li class="win">
+          <div>
+            <span class="num">−75%</span><span class="from">vector index size</span>
+            <div class="ba" role="img" aria-label="Vector index size: 75% smaller with IVF_SQ8"><span>was</span><i style="--w:100%"></i><span>now</span><i class="now" style="--w:25%"></i></div>
+          </div>
+          <p><strong>Shipped Milvus vector search</strong> into the Face Recognition System behind a pluggable store that can swap to pgvector, and chose IVF_SQ8 over HNSW for a 75% smaller index.</p>
+        </li>
       </ul>
     </div>
   </div>
-</nav>
+</section>
 
-<!--Main Starting section start-->
-<div id="home">
-  <section class="hero full-height">
-    <ul class="box-area">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
-    <div class="hero-overlay"></div>
-    <div class="hero-content dark-txt-- light-txt text-center">
-      <div class="container">
-        <div class="row">
-          <div class=" bio-details col-md-12" data-wow-duration="2s" data-wow-delay="1s">
-            <h5 class="banner-txt-position">Hi, I am </h5>
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Side projects</p>
+        <h2>What I build after work</h2>
+      </div>
+      <p>The same territory as the day job (video, faces and very large trees) with room to go deeper. All of it is open source.</p>
+    </div>
 
-            <h1 id="bio" class="text-uppercase">Prabal Pandey </h1>
-            <p class="hero-subtitle"><h5 class="hero-subtitle"> I am a &nbsp;</h5> <span class="hero-subtitle" id="text"></span> <span id="cursor"></span>
-            </p>
-            <div class="soc_ial-link">
-              <!-- <a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
-              <a target="_blank" href="#"><i class="fa fa-twitter"></i></a> -->
-              <a target="_blank" href="www.linkedin.com/in/iamprabal"><i class='fa fa-linkedin'></i></a>
-              <a target="_blank" href="https://stackoverflow.com/users/16023011/prabal-pandey"><i class="fa fa-stack-overflow"></i></a>
-              <!-- <a target="_blank" href="#"><i class="fa fa-stack-exchange"></i></a> -->
-              <a target="_blank" href="https://github.com/kingpingx"><i class="fa fa-github"></i></a>
-              <a target="_blank" href="https://www.hackerrank.com/prabal_pandey_p1"><i class=" hackerrank iconify" data-icon="la:hackerrank"></i></a>
-              <a target="_blank" href="https://leetcode.com/user4928P/"><i class="fa iconify" data-icon="cib:leetcode"></i></a>
-              <a target="_blank" href="https://www.codechef.com/users/kingping"><i class="fa fa-code"></i></a>
-            </div>
-          </div>
+    <div class="featured">
+      <article class="proj">
+        <div class="proj-head">
+          <h3>PhotoGrouper</h3>
+          <span class="status wip">In progress</span>
         </div>
-      </div>
-    </div>
-    <div class="go-down wow bounceInUp" data-wow-duration="1s" data-wow-delay="1s">
-      <a href="#about" class="mouse"></a>
-    </div>
-  </section>
-</div>
-<!--Main Starting section end-->
+        <p class="tagline">Finds every photo of a person in your library, without uploading anything.</p>
+        <ol class="pipe" aria-label="Pipeline">
+          <li><span>scan</span></li><li><span>decode</span></li><li><span>detect</span></li><li><span>align</span></li><li><span>embed</span></li><li><span>group</span></li><li><span>name</span></li>
+        </ol>
+        <figure class="scale-fig">
+          <svg class="scale" viewBox="0 0 400 64" role="img" aria-label="Face similarity scores: different people scored -0.06 to 0.18, the same person 0.62 to 0.81. The grouping threshold is 0.35.">
+            <line class="axis" x1="20" y1="40.5" x2="380" y2="40.5"/>
+            <line class="tick" x1="56" y1="40" x2="56" y2="44"/>
+            <line class="tick" x1="128" y1="40" x2="128" y2="44"/>
+            <line class="tick" x1="200" y1="40" x2="200" y2="44"/>
+            <line class="tick" x1="272" y1="40" x2="272" y2="44"/>
+            <line class="tick" x1="344" y1="40" x2="344" y2="44"/>
+            <text x="56" y="57" text-anchor="middle">0.0</text>
+            <text x="128" y="57" text-anchor="middle">0.2</text>
+            <text x="200" y="57" text-anchor="middle">0.4</text>
+            <text x="272" y="57" text-anchor="middle">0.6</text>
+            <text x="344" y="57" text-anchor="middle">0.8</text>
+            <rect class="band-diff" x="34.4" y="29" width="86.4" height="11"/>
+            <rect class="band-same" x="279.2" y="29" width="68.4" height="11"/>
+            <line class="thr" x1="182" y1="14" x2="182" y2="44"/>
+            <text class="lbl" x="77.6" y="23" text-anchor="middle">different people</text>
+            <text class="lbl" x="313.4" y="23" text-anchor="middle">same person</text>
+            <text class="strong" x="182" y="10" text-anchor="middle">threshold 0.35</text>
+          </svg>
+          <figcaption>Face similarity on the reference photos. The threshold sits in the middle of the gap.</figcaption>
+        </figure>
+        <p>A .NET 8 and Avalonia desktop app. ONNX Runtime runs YuNet to find faces and ArcFace to turn each one into 512 numbers, on the GPU through DirectML. Chinese Whispers then groups them into people without being told how many people there are. Every stage saves to SQLite, so a scan stopped at minute forty resumes where it left off.</p>
+        <p class="stats">~15,700 lines · 12 projects · 246 tests</p>
+        <ul class="chips"><li>.NET 8</li><li>Avalonia</li><li>ONNX Runtime</li><li>DirectML</li><li>OpenCV</li><li>SQLite</li></ul>
+        <div class="proj-links"><a class="ext" href="https://github.com/kingpingx/PhotoGroup" target="_blank" rel="noopener">Code</a></div>
+      </article>
 
-
-<!--About Me section start-->
-<div class="section-wrapper" id="about">
-  <section class="section-space section-cat-bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2 ">
-          <div class="section-title text-center m-bot-0 p-top-0 p-bot-0 wow-fadeInUp">
-            <h3 class="m-top-0">About</h3>
-            <h1 class="title about-title">Let me introduce myself.</h1>
-          </div>
-
-          <div class="media about-info m-bot-100">
-            <div class="media-left about-thumb media-middle">
-              <a href="#">
-                <img alt="" class="media-object" src="static/css/p1.jpeg">
-              </a>
-            </div>
-            <div class="media-body lang">
-              <p >Greetings, I am <em>Prabal Pandey</em>, a Computer Science Student and a Developer. I am also a Gate 2022 Qualified.</p>
-              <p>I have a passion for developing things weather it is in computer world or real world. I have experience in developing web applications.</p>
-              <p>Along with development I have a keen interest in problem solving and programming.</p>
-            </div>
-          </div>
-          <div class="row lang">
-            <div class="col-md-6 col-sm-6">
-              <h4 class="text-uppercase font-bold">Profile</h4>
-              <p>
-                <i class="fa fa-globe text-primary"></i> Web Developer and Programmer<br />
-                <i class="fa fa-graduation-cap text-success"></i>Pursuing Bachelor of Technology in Computer Science and Engineering from Dronacharya College of Engineering<br/>
-              </p>
-              <ul class="info-list list-unstyled">
-                <li>
-                  <label>Full Name:</label>
-                  <span><strong>Prabal Pandey</strong></span>
-                </li>
-                <li>
-                  <label>Birth Date:</label>
-                  <span>19 November, 2000</span>
-                </li>
-                <li>
-                  <label>Interests:</label>
-                  <span>Web Developing, Programming, Music, Travelling</span>
-                </li>
-                <li>
-                  <label>Phone:</label>
-                  <span>+91 - <span class="click-phone">CLICK-TO-REVEAL</span></span>
-                </li>
-                <li>
-                  <label>Email:</label>
-                  <span><span class="click-email">CLICK-TO-REVEAL</span></span>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <h4 class="text-uppercase font-bold">Skills</h4>
-              <p>I have passion in developing application uisng Python, Django. I work with MySQL and MongoDB as databases. I also work with REST API's. Aaprt from this my skill set involves programming in C, C++, Java, Data Structures, HTML, CSS, Bootstrap, JavaScript.</p>
-
-              <!--progress bar start-->
-              <div class="progress mild-progress-style">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
-                     aria-valuemax="100" style="width: 95%">
-                  <div class="skills-info">Web Application Development <span>80%</span></div>
-                </div>
-              </div>
-
-              <div class="progress mild-progress-style">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                     aria-valuemax="100" style="width: 100%">
-                  <div class="skills-info">Python & Django <span>90%</span></div>
-                </div>
-              </div>
-
-              <div class="progress mild-progress-style">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0"
-                     aria-valuemax="100" style="width: 95%">
-                  <div class="skills-info">Programming<span>85%</span></div>
-                </div>
-              </div>
-
-              <div class="progress mild-progress-style">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                     aria-valuemax="100" style="width: 90%">
-                  <div class="skills-info">Firebase, Heroku, Git <span>80%</span></div>
-                </div>
-              </div>
-
-              <div class="progress mild-progress-style">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                     aria-valuemax="100" style="width: 85%">
-                  <div class="skills-info">REST API <span>75%</span></div>
-                </div>
-              </div>
-
-              <!--progress bar end-->
-
-            </div>
-          </div>
-          <div class="text-center m-top-50">
-            <a class="btn line-btn-dark btn-icon btn-radius" href="https://drive.google.com/file/d/1ED314pIqwpVVJ07i8qVbYt2GNddVfPP_/view?usp=sharing" target="_blank"><i class="fa fa-briefcase"></i> View Resume</a>
-          </div>
+      <article class="proj">
+        <div class="proj-head">
+          <h3>ThePlayer</h3>
+          <span class="status done">v1.0 · Feature complete</span>
         </div>
+        <p class="tagline">Plays RTSP cameras and H.265 video in Chrome, and lets you pick where the decoding happens.</p>
+        <ul class="modes">
+          <li class="mh" aria-hidden="true"><span>Where it decodes</span><span>Server load</span></li>
+          <li><div><b>On the client</b><span>WebSocket → WebCodecs · original bytes</span></div><div class="load" data-level="0" role="img" aria-label="Server load: almost none"><i></i><i></i><i></i></div></li>
+          <li><div><b>Server assisted</b><span>WebRTC via MediaMTX · H.265 → H.264 when needed</span></div><div class="load" data-level="2" role="img" aria-label="Server load: high when converting"><i></i><i></i><i></i></div></li>
+          <li><div><b>On the server</b><span>WebSocket JPEG frames · 5–10× the bandwidth</span></div><div class="load" data-level="3" role="img" aria-label="Server load: highest"><i></i><i></i><i></i></div></li>
+        </ul>
+        <p>Browsers speak neither RTSP nor, in most cases, H.265. ThePlayer solves the transport with MediaMTX and a WebSocket, then offers three answers to the codec problem from one shared FFmpeg process. If the browser can decode H.265 itself, it gets the original bytes and the server's encoder sits at zero. The page shows what each choice costs on both ends while the video plays.</p>
+        <ul class="chips"><li>.NET 8</li><li>FFmpeg</li><li>MediaMTX</li><li>WebRTC</li><li>WebCodecs</li><li>Angular</li></ul>
+        <div class="proj-links"><a class="ext" href="https://github.com/kingpingx/ThePlayer" target="_blank" rel="noopener">Code</a></div>
+      </article>
+    </div>
+
+    <div class="more">
+      <article class="proj">
+        <div class="proj-head">
+          <h3>i2v-tree</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p class="tagline">An Angular virtual tree that stays fast at 100,000 nodes.</p>
+        <p>It records the hierarchy as metadata, flattens it to visible rows, then windows the list, so about 30 rows exist in the DOM however big the tree gets. Tri-state checkboxes, drag and drop, and full ARIA tree support. Built on Gabriel J. Campbell's of-tree.</p>
+        <ul class="chips"><li>Angular</li><li>TypeScript</li><li>Virtual scrolling</li></ul>
+        <div class="proj-links">
+          <a class="ext" href="https://kingpingx.github.io/TreeLibrary/" target="_blank" rel="noopener">Live demo</a>
+          <a class="ext" href="https://github.com/kingpingx/TreeLibrary" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <h3>The Collaborator</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p class="tagline">A self-updating showcase of my GitHub projects.</p>
+        <p>It reads the GitHub API when the page loads, so a new repository shows up without any edits. For each project it shows the status, the demo and where help is wanted, and it falls back to an offline snapshot when the API is rate-limited.</p>
+        <ul class="chips"><li>Angular</li><li>Tailwind CSS</li><li>GitHub Actions</li></ul>
+        <div class="proj-links">
+          <a class="ext" href="https://kingpingx.github.io/TheCollaborator/" target="_blank" rel="noopener">Live site</a>
+          <a class="ext" href="https://github.com/kingpingx/TheCollaborator" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+      <article class="proj">
+        <div class="proj-head">
+          <h3>Bouncing Ball</h3>
+          <span class="status live">Live</span>
+        </div>
+        <p class="tagline">Elastic collisions, in Python and in the browser, from one shared model.</p>
+        <p>Balls bounce off the walls and off each other with momentum conserved, trailing as they go. There's a Python turtle version and a JavaScript canvas version, with zero dependencies on either side.</p>
+        <ul class="chips"><li>JavaScript</li><li>Canvas</li><li>Python</li></ul>
+        <div class="proj-links">
+          <a class="ext" href="https://kingpingx.github.io/Bouncing-Ball/web/" target="_blank" rel="noopener">Try it</a>
+          <a class="ext" href="https://github.com/kingpingx/Bouncing-Ball" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+    </div>
+
+    <p class="see-all">Every project, with its status and demo, is listed on <a class="ext" href="https://kingpingx.github.io/TheCollaborator/" target="_blank" rel="noopener">The Collaborator</a></p>
+  </div>
+</section>
+
+<section class="section" id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Stack</p>
+        <h2>Spec sheet</h2>
+      </div>
+      <p>The languages, frameworks and tools I work with.</p>
+    </div>
+    <dl class="spec">
+      <div><dt>Languages</dt><dd>C#, TypeScript, JavaScript, SQL (T-SQL, PL/pgSQL)</dd></div>
+      <div><dt>Backend</dt><dd>.NET 8, .NET Core, .NET Framework, ASP.NET Core Web API, REST, Entity Framework Core</dd></div>
+      <div><dt>Architecture</dt><dd>Microservices, event-driven and distributed systems, Clean Architecture, SOLID, design patterns</dd></div>
+      <div><dt>Databases</dt><dd>PostgreSQL, TimescaleDB, SQL Server, MySQL, pgvector, Milvus</dd></div>
+      <div><dt>Messaging &amp; real-time</dt><dd>RabbitMQ, MassTransit, MQTT, SignalR, WebSockets, WebRTC, TCP/IP</dd></div>
+      <div><dt>Frontend</dt><dd>Angular 18, TypeScript, Kendo UI, GridStack, HTML5, CSS3</dd></div>
+      <div><dt>Cloud &amp; DevOps</dt><dd>Docker, GitHub Actions CI/CD, Git, Linux, Grafana, AWS (EC2, S3)</dd></div>
+      <div><dt>Testing</dt><dd>xUnit, unit and architecture tests, code review, Agile/Scrum</dd></div>
+      <div class="full"><dt>Domain</dt><dd>Video surveillance, VMS, video analytics, ANPR, face recognition, ITMS, ICCC, RTSP, real-time systems</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>Hi, I'm Prabal</h2>
       </div>
     </div>
-  </section>
-</div>
-
-<!--About Me section end-->
-
-
-<!--Hire Me section start-->
-<section class="section-space parallax parallax-promo">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-sm-8 light-txt text-right wow hireme fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
-        <h2 class="m-top-0">May I help you with something? Hire me now.</h2>
+    <div class="about">
+      <figure class="portrait">
+        <div class="shot">
+          <img src="assets/prabal.jpg" alt="Prabal Pandey" width="600" height="750">
+          <div class="fbox" aria-hidden="true"><span>Face 01 · Prabal</span></div>
+          <i class="lm" style="left:47.9%;top:41.3%" aria-hidden="true"></i>
+          <i class="lm" style="left:65.6%;top:41.8%" aria-hidden="true"></i>
+          <i class="lm" style="left:54.5%;top:49.2%" aria-hidden="true"></i>
+          <i class="lm" style="left:48.2%;top:55.5%" aria-hidden="true"></i>
+          <i class="lm" style="left:64.4%;top:55.6%" aria-hidden="true"></i>
+        </div>
+        <figcaption>5 landmarks → aligned 112×112 crop → 512-d vector. The same pipeline PhotoGrouper runs.</figcaption>
+      </figure>
+      <div>
+        <div class="prose">
+          <p>I'm a software engineer in Gurugram. Since 2022 I've worked on video surveillance and analytics at I2V Systems, where the software I write runs in control rooms and city command centres.</p>
+          <p>My favourite part of the job is the moment a system stops struggling: a queue that no longer needs a restart every morning, or a search that answers before you notice you were waiting. I like measuring before and after, which is why most of this page is numbers.</p>
+          <p>Outside work I stay close to the same problems. ThePlayer makes Chrome play any camera stream, and PhotoGrouper finds every photo of a person on your own machine.</p>
+        </div>
+        <ul class="facts">
+          <li><b>Based in</b><span>Gurugram, Haryana, India</span></li>
+          <li><b>Education</b><span>B.Tech in Software Engineering, Maharshi Dayanand University, 2019–2023</span></li>
+          <li><b>Recognition</b><span>Top 8, Microsoft Imagine Cup India Pre-Finals, February 2022</span></li>
+          <li><b>Now</b><span>Senior Software Engineer at I2V Systems, mentoring 4 engineers</span></li>
+        </ul>
       </div>
-      <div class="col-md-4 col-sm-4 wow fadeInRight " style="visibility: visible; animation-name: fadeInRight;">
-        <a href="#contact" class="btn line-btn-light btn-radius btn-hire">Hire Me</a>
-      </div>
+    </div>
 
+    <div class="playback" id="playback">
+      <div class="pb-top">
+        <p class="eyebrow">Playback · Aug 2019 → now</p>
+        <span class="pb-now" id="pbNow">Sep 2026</span>
+      </div>
+      <div class="pb-card" aria-live="polite">
+        <span class="pb-date" id="pbDate">Aug 2026</span>
+        <span class="pb-title" id="pbTitle">Started ThePlayer and PhotoGrouper</span>
+        <span class="pb-text" id="pbText">Chrome that plays any camera stream, and offline face grouping for a personal photo library.</span>
+      </div>
+      <div class="pb-rail">
+        <div class="pb-fill" id="pbFill" style="width:100%"></div>
+        <i class="pb-yr" style="left:5.88%" aria-hidden="true"><span>2020</span></i>
+        <i class="pb-yr" style="left:20%" aria-hidden="true"><span>2021</span></i>
+        <i class="pb-yr" style="left:34.12%" aria-hidden="true"><span>2022</span></i>
+        <i class="pb-yr" style="left:48.24%" aria-hidden="true"><span>2023</span></i>
+        <i class="pb-yr" style="left:62.35%" aria-hidden="true"><span>2024</span></i>
+        <i class="pb-yr" style="left:76.47%" aria-hidden="true"><span>2025</span></i>
+        <i class="pb-yr" style="left:90.59%" aria-hidden="true"><span>2026</span></i>
+        <i class="pb-ev" style="left:0%" aria-hidden="true"></i>
+        <i class="pb-ev" style="left:35.29%" aria-hidden="true"></i>
+        <i class="pb-ev" style="left:42.35%" aria-hidden="true"></i>
+        <i class="pb-ev" style="left:54.12%" aria-hidden="true"></i>
+        <i class="pb-ev" style="left:94.12%" aria-hidden="true"></i>
+        <i class="pb-ev on" style="left:98.82%" aria-hidden="true"></i>
+        <div class="pb-head" id="pbHead" style="left:100%"></div>
+        <input type="range" id="pbRange" min="0" max="85" step="1" value="85" aria-label="Career timeline, August 2019 to September 2026" aria-valuetext="Sep 2026">
+      </div>
+      <div class="pb-ctrl">
+        <button type="button" id="pbPrev" aria-label="Previous event">◀ Prev</button>
+        <button type="button" id="pbPlay">▶ Play</button>
+        <button type="button" id="pbNext" aria-label="Next event">Next ▶</button>
+        <span class="pb-hint">Drag the playhead or use the arrow keys.</span>
+      </div>
     </div>
   </div>
 </section>
-<!--Hire Me section end-->
 
-
-<!-- experience section-->
-<div class="section-wrapper" id="experience">
-  <section class="section-space section-gray">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-title text-center">
-            <h1 class="title text-uppercase"> Experience</h1>
-            <div class="sub-title">A variety of experiences all over the world.</div>
-          </div>
-
-          <section class="timeliner timeline-container">
-            <div class="timeline-block">
-              <div class="timeline-icon">
-                <i class="fa fa-times"></i>
-              </div>
-
-              <div class="timeline-content">
-                <a href="#more" class="more-trigger"><i class="fa fa-chevron-down"></i></a>
-                <h2>Droid7 Technolabs</h2>
-                <span class="text-muted">Django Developer Intern</span>
-                <div class="more">
-                  <p>I worked as a Django Developer Intern where I had worked on various projects like Campus Tube and Vizit. I had to develop and maintain various functionalities like Login & Signup Authentication, Video & Transaction System, User Module, etc. as per requirements using various languages (Python, Javascript) and frameworks (Jquery & Django) along with Databases (MongoDB and mySQL). I also take care of Front End of various websites using HTML5, CSS, Bootstrap.</p>
-                </div>
-                <span class="cd-date">Oct, 2021 - Feb, 2022</span>
-              </div>
-            </div>
-
-            <div class="timeline-block clearfix">
-              <div class="timeline-icon">
-                <i class="fa fa-times"></i>
-              </div>
-
-              <div class="timeline-content">
-                <a href="#more" class="more-trigger"><i class="fa fa-chevron-down"></i></a>
-                <h2>The Sparks Foundation</h2>
-                <span class="text-muted">Web Developer</span>
-                <div class="more">
-                  <p>Here I worked as a Web Developer Intern and create a project "Basic Banking System" using Python, JS, Django & mySQL. I am responsible for all the functionalities along with Authentication and Deployment of website on platforms like Firebase and Heroku.</p>
-                </div>
-                <span class="cd-date">Aug, 2021 - Sep, 2021</span>
-              </div>
-            </div>
-
-           </section>
-        </div>
-      </div>
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2 style="margin-bottom:20px">Get in touch</h2>
+    <p class="intro">Email is the quickest way to reach me. I'm glad to talk about senior .NET and full-stack roles, or about video, streaming and event-driven systems.</p>
+    <div class="mail-row">
+      <a class="mail" href="mailto:prabal.pandey.prabal@gmail.com">prabal.pandey.prabal@gmail.com</a>
+      <button type="button" class="copy" id="copyMail">Copy</button>
     </div>
-  </section>
-</div>
-<!-- experience section end-->
-
-
-
-<!-- education section start-->
-<div class="section-wrapper" id="education">
-  <section class="section-space section-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <!--education start-->
-          <div class="section-wrapper" id="education">
-            <div class="section-title m-top-100 text-center">
-              <h1 class="title text-uppercase"> Education</h1>
-              <div class="sub-title">The stuff I am made up of.</div>
-            </div>
-            <section class="timeliner timeline-container">
-              <div class="timeline-block">
-                <div class="timeline-icon">
-                  <i class="fa fa-graduation-cap"></i>
-                </div>
-
-                <div class="edu-timeline-content">
-                  <a href="#more" class="more-trigger"><i class="fa fa-chevron-down"></i></a>
-                  <h2>Bachelor of Technology in Computer Science</h2>
-                  <span class="text-muted">Dronacharya Collegeof Engineering (M.D.U. Rohtak)</span>
-                  <div class="more">
-                    <p>This course covers the basic theoretical aspects of Computer Software and Engineering with basics of engineering like Mechanical and Electrical Engineering with workshop experience.</p>
-                    <p>My final project is 'Canary' a Web-based and Android Application to Connect Students of Dronacharya. The aim of this software is to provide a collaborative platform for the students, who wants the guidance and path during course period and so they can can communicate with the experts.</p>
-                    <p>This software connects the people who are ready to provide guidance with the ones who need it. It also encourages students to communicate more with each other as only minimal details are required in order to communicate.</p>
-                  </div>
-                  <span class="cd-date">2019 - 2023</span>
-                </div>
-              </div>
-
-              <div class="timeline-block clearfix">
-                <div class="timeline-icon">
-                  <i class="fa fa-graduation-cap"></i>
-                </div>
-
-                <div class="edu-timeline-content">
-                  <a href="#more" class="more-trigger"><i class="fa fa-chevron-down"></i></a>
-                  <h2>Senior Secondary</h2>
-                  <span class="text-muted">Chiranjiv Bharti School (CBSE Board)</span>
-                  <div class="more">
-                    <p>I was a Science Student (Non-Medical) where I have studied about Mathematics, Physics and Chemistry along with communication subjects like English.</p>
-                    <p>I also opted for Physical Education and Fine Arts as I have a good interest in Sports and Drawing.</p>
-                  </div>
-                  <span class="cd-date">2016 - 2018</span>
-                </div>
-              </div>
-
-            </section>
-          </div>
-          <!--education end-->
-
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-<!-- education section end-->
-
-
- <!--fun factor section start-->
- <section class="section-space parallax parallax-funfactor light-txt">
-  <div class="container">
-    <div class="achievement">
-
-      <div class="col-md-3 col-sm-6">
-        <div class="fun-box text-center">
-         <i class="icon-lightbulb"></i>
-
-          <div class="value" data-target="5">5</div>
-          <div class="title">completed projects</div>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6">
-        <div class="fun-box text-center">
-         <i class="icon-trophy"></i>
-
-          <div class="value" data-target="4">4</div>
-          <div class="title">Competetions Won</div>
-        </div>
-      </div>
-
-      
-
-      <div class="col-md-3 col-sm-6">
-        <div class="fun-box text-center">
-           <i class="icon-beaker"></i> 
-
-          <div class="value" data-target="2">2</div>
-          <div class="title">current projects</div>
-        </div>
-      </div>
-
-    </div>
+    <ul class="reach">
+      <li><a class="ext" href="https://www.linkedin.com/in/iamprabal" target="_blank" rel="noopener">linkedin.com/in/iamprabal</a></li>
+      <li><a class="ext" href="https://github.com/kingpingx" target="_blank" rel="noopener">github.com/kingpingx</a></li>
+      <!--repo-only--><li><a class="ext" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></li><!--/repo-only-->
+    </ul>
   </div>
 </section>
-<!--fun factor section end-->
 
-<!--portfolio section start-->
-<div class="section-wrapper" id="portfolio">
-  <section class="section-space">
-    <div class="container">
-      <div class="section-title text-center">
-        <h1 class="title">Portfolio</h1>
-        <div class="sub-title">Check out my latest and greatest creations. Get in touch with me to learn more about them in detail.</div>
-      </div>
+</main>
 
-      <!-- <div class="text-center clearfix">
-        <nav class="portfolio-filter">
-          <ul>
-            <li><a href="javascript:;" class="active fil-cat filter" data-filter="all">All</a></li>
-            <li><a href="javascript:;" class="fil-cat filter" data-filter=".apps">Web Apps</a></li>
-            <li><a href="javascript:;" class="fil-cat filter" data-filter=".webs">Web Design</a></li>
-            <li><a href="javascript:;" class="fil-cat filter" data-filter=".mobi">Mobile Apps</a></li>
-          </ul>
-        </nav>
-      </div> -->
-      <div id="portfolio-wrapper" class="compressed">
-         <div id="pf1" class="portf showf"> 
-            <div class="project">    
-              <!-- Trigger/Open The Modal -->
-              <img src="static/css/C-tube2.jpg" class="btn btn-primary modal-button" href="#myModal1" data-keyboard="false" data-backdrop="static">
-              <h3>Campus Tube</h3>
-              <!-- The Modal -->
-              <div id="myModal1" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4>Campus Tube</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="project-image">
-                      <img src="static/css/C-tube1.jpg" alt="ctube image">
-                    </div>
-                    <div class="project-content">
-                      <p>Campus Tube is a website that is developed to provide a platform to watch, share, like, dislike videos among a school, moreover it is like a clone of Youtube.</p>
-                      <p>This is my internship project in this project a Master Admin is present which takes care of all happening, students have to create their account on campus tube which will be approved and authorised by master admin, then students can share their videos on existed channels as well as on their own channels</p>
-                      <p>A Transaction System is also present which eventually calculate the transaction points of students as per their videos actions and they can also redeem them through various ways.</p>
-                      <p>The project's Front End is developed using HTML, CSS, JavaScript & Bootstrap, and Backend is developed using Python, Javascript and Framework like Ajax, Django & Jquery along with MongoDB as database.</p>
-                      <p>Campus is deployed on Heroku and authentication is done through Django Admin, Google-OAuth, Facebook OAuth2.</p>
-                    </div>
-                  </div>
-                  <div class="project-links">
-                    <a target="_blank" href="https://campus-tube.herokuapp.com/"><h4>Website Link</h4></a>
-                  </div>
-                  <div class="modal-footer">
-                    <span class="close">Close ×</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="project">    
-              <!-- Trigger/Open The Modal -->
-              <img src="static/css/vizit1.jpg" class="btn btn-primary modal-button" href="#myModal2" data-keyboard="false" data-backdrop="static">
-              <h3>Vizit</h3>
-              <!-- The Modal -->
-              <div id="myModal2" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4>Vizit</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="project-image">
-                      <img src="static/css/vizit2.jpg" alt="Vizit image">
-                    </div>
-                    <div class="project-content">
-                      <p>Vizit is a website and an android App that is designed and developed to provide a platform that fullfills the management needs of R.S.G.H. Company.</p>
-                      <p>This is my internship project in this project a user have to check in & check-out whenever a person visiting or going and they can also schedule their appointment as per their host, time, date & contact details</p>
-                      <p>A Quick Check-in option is also present to ease and quickning of process. User authorization, Visitor Card Generation, Visitor list and reports can also be done at any time.</p>
-                      <p>The project's Front End is developed using HTML, CSS, JavaScript & Bootstrap, and Backend is developed using Python, Javascript and Framework like Ajax, Django & Jquery along with MongoDB as database.</p>
-                      <p>Vizit is deployed on Heroku and authentication is done through Django Admin, Google-OAuth, Facebook OAuth2.</p>
-                    </div>
-                  </div>
-                  <div class="project-links">
-                    <a target="_blank" href="http://vizit-app.herokuapp.com/"><h4>Website Link</h4></a>
-                  </div>
-                  <div class="modal-footer">
-                    <span class="close">Close ×</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="project">    
-              <!-- Trigger/Open The Modal -->
-              <img src="static/css/tsb1.jpg" class="btn btn-primary modal-button" href="#myModal3" data-keyboard="false" data-backdrop="static">
-              <h3>Banking System</h3>
-              <!-- The Modal -->
-              <div id="myModal3" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4>Banking System</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="project-image">
-                      <img src="static/css/tsb2.jpg" alt="Vizit image">
-                    </div>
-                    <div class="project-content">
-                      <p>Basic Banking System is a simple banking system project that performs all the basic banking functioning.</p>
-                      <p>In this project a user have a dummy back account interface and he can send money from one bank accounts to another bank accounts, generate transaction history, view user account's detail.</p>
-                      <p>User login option is also present which is done through Django Authentication.</p>
-                      <p>The project's Front End is developed using HTML, CSS, JavaScript & Bootstrap, and Backend is developed using Python and Framework like Django along with mySQL as database.</p>
-                      <p>This project is deployed on Heroku and authentication is done through Django Admin.</p>
-                    </div>
-                  </div>
-                  <div class="project-links">
-                    <a target="_blank" href="https://github.com/kingpingx/Basic-Banking-System"><h4>Source Code</h4></a>
-                    <a target="_blank" href="#"><h4>Website Link</h4></a>
-                  </div>
-                  <div class="modal-footer">
-                    <span class="close">Close ×</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <div id="pf2" class="portf hidef">     
-          <div class="project">    
-            <!-- Trigger/Open The Modal -->
-            <img src="static/css/T2S1.jpg" class="btn btn-primary modal-button" href="#myModal4" data-keyboard="false" data-backdrop="static">
-            <h3>Text2Speech & Speech2Text</h3>
-            <!-- The Modal -->
-            <div id="myModal4" class="modal">
-              <!-- Modal content -->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4>Text2Speech & Speech2Text</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="project-image">
-                    <img src="static/css/T2S2.jpg" alt="Vizit image">
-                  </div>
-                  <div class="project-content">
-                    <p>Text to Speech & Speech to Text is a project that performs coversion of Text Files to Audio and Audio to .txt Files.</p>
-                    <p>In this project a user have to select appropirate option as per their need like Listener for conversion of Audio Files to Text Files and Speecho for conversion of text to Audio Files.</p>
-                    <p>Conversion of Audio to text is done using gtts Module and Text to audio is done through Sppech Recognition Module.</p>
-                    <p>The project's Front End is developed using HTML, CSS, JavaScript & Bootstrap, and Backend is developed using Python and Framework like Django.</p>
-                    <p>This project is deployed on Heroku and suitable for simpler text files and less noise audios.</p>
-                  </div>
-                </div>
-                <div class="project-links">
-                  <a target="_blank" href="https://github.com/kingpingx/Text2Speech-Speech2Text"><h4>Source Code</h4></a>
-                  <a target="_blank" href="#"><h4>Website Link</h4></a>
-                </div>
-                <div class="modal-footer">
-                  <span class="close">Close ×</span>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="project">   
-            <img src="static/css/ave1.jpg" class="btn btn-primary modal-button" href="#myModal5" data-keyboard="false" data-backdrop="static">
-            <h3>Avekshaka</h3>
-            <div id="myModal5" class="modal">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4>Avekshaka</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="project-image">
-                    <img src="static/css/ave2.jpg" alt="Vizit image">
-                  </div>
-                  <div class="project-content">
-                    <p>It is simple website that is designed for people suffering with Alzheimer and faciliate them with various various videos and excerices. This website is created as a extension of its Mobile Application to ease in sign up process, updating profile, and handling app crashes and other situations.</p>
-                    <p>In this project a user have a dummy back account interface and he can send money from one bank accounts to another bank accounts, generate transaction history, view user account's detail.</p>
-                    <p>User login option is also present which is done through Django Authentication.</p>
-                    <p>App webpages are created using HTML, CSS & Bootstrap and its Backend is developed using Python. API are also created using REST API to connect it to Mobile Application.</p>
-                    <p>This project is deployed on Heroku and authentication is done through Django Admin.</p>
-                  </div> 
-                </div>
-                <div class="project-links">
-                  <a target="_blank" href="https://github.com/kingpingx/imagine"><h4>Source Code</h4></a>
-                  <a target="_blank" href="https://avekshak.herokuapp.com/exercise"><h4>Website Link</h4></a>
-                </div>
-                <div class="modal-footer">
-                  <span class="close">Close ×</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="project">   
-            <img src="static/css/BB1.jpg" class="btn btn-primary modal-button" href="#myModal6" data-keyboard="false" data-backdrop="static">
-            <h3>Ball Bouncing</h3>
-            <div id="myModal6" class="modal">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4>Ball Bouncing Window</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="project-image">
-                    <img src="static/css/BB1.jpg" alt="Vizit image">
-                  </div>
-                  <div class="project-content">
-                    <p>It is python project in which a ball is moving in a closed container and get reflected back as per real life pyshics using pure logic.</p>
-                    <p>This project is build using Python and Turtle Module and uses mathematical formulas of Coordinate Geometry.</p>
-                  </div> 
-                </div>
-                <div class="project-links">
-                  <a target="_blank" href="https://github.com/kingpingx/Bouncing-Ball"><h4>Source Code</h4></a>
-                </div>
-                <div class="modal-footer">
-                  <span class="close">Close ×</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="soc_ial-link">
-          <a href="#" onclick="showportf(1)">1</a>
-          <a href="#" onclick="showportf(2)">2</a>
-          
-        </div>
-          
-      </div>
-    </div>
-  </section>
-</div>
-<!--portfolio section end-->
-
-<!-- pricing section start-->
-<!-- <div class="section-wrapper" id="pricing-table" hidden>
-  <div class="section-top-bg"></div>
-  <section class="section-space">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-title text-center light-txt">
-            <h1 class="title">Services &amp; Pricing</h1>
-            <div class="sub-title">These are the services I can provide.</div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <ul class="pricing-table">
-            <li class="pricing-item">
-              <h2>Web Development</h2>
-              <div class="price-quote">
-                <span class="number"> <sup>&pound;</sup>60</span> / hour
-              </div>
-              <div class="p-item-list">
-                <span>One to One Mentoring</span>
-                <span>Solutions directly delivered</span>
-                <span>Zoom Session Delivery</span>
-              </div>
-              <a href="#contact" class="btn line-btn-dark btn-radius next">Contact Me</a>
-            </li>
-            <li class="pricing-item feature">
-              <div class="feature-ribon">
-                Long Term
-              </div>
-              <h2>Mentoring</h2>
-              <div class="price-quote">
-                <span class="number"> <sup>&pound;</sup>30</span> / hour
-              </div>
-              <div class="p-item-list">
-                <span>One to One Mentoring</span>
-                <span>15 - 30 Sessions using Zoom</span>
-                <span>Complete Stack Learning</span>
-              </div>
-              <a href="#contact" class="btn solid-btn-theme btn-radius next">Contact Me</a>
-            </li>
-            <li class="pricing-item">
-              <h2>Premium</h2>
-              <div class="price-quote">
-                <span class="number"> <sup>&pound;</sup>100</span> / hour
-              </div>
-              <div class="p-item-list">
-                <span>Exclusive Mentoring</span>
-                <span>Custom Software Solutions</span>
-                <span>Zoom Session Delivery</span>
-              </div>
-              <a href="#contact" class="btn line-btn-dark btn-radius next">Contact Me</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="row knock-us">
-        <div class="col-md-12 text-center">
-          <p class="">Looking for more facilities and details? Feel free to contact me...</p>
-          <a href="#contact" class="btn btn-sm line-btn-dark btn-radius next">Contact Me</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</div> -->
-<!-- pricing section end -->
-
-<!--blog section start-->
-<!-- <div class="section-wrapper reveal" id="blog">
-  <section class="section-space section-gray">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-title text-center">
-            <h1 class="title">Blog</h1>
-            <div class="sub-title">Adventures of my life as a Playful Tale.</div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4">
-          <div class="blog-post">
-            <div class="thumb zoom-img">
-              <a target="_blank" href="https://blog.praveen.science/collection-of-free-learning-resources/">
-                <img src="https://i.imgur.com/CjZQjcbl.png" alt="Collection of Free Learning Resources & Personal 1-1 Mentoring" />
-                <div class="date">21st Mar, 2020</div>
-              </a>
-            </div>
-            <div class="post-meta">
-              <h4><a target="_blank" href="https://blog.praveen.science/collection-of-free-learning-resources/">Collection of Free Learning Resources & Personal 1-1 Mentoring</a></h4>
-              <div class="category">
-                <span><a>Courses</a></span> <span><a>Learn</a></span> <span><a>Learning</a></span> <span><a>COVID19</a></span> <span><a>Personal</a></span> <span><a>COVID</a></span> <span><a>Development</a></span> <span><a>Udemy</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="blog-post">
-            <div class="thumb zoom-img">
-              <a target="_blank" href="https://blog.praveen.science/why-dont-tamil-people-have-last-names/">
-                <img src="https://i.imgur.com/CojuWYF.png" alt="Why Don’t Tamil People Have Last Names?" />
-                <div class="date">27th Oct, 2019</div>
-              </a>
-            </div>
-            <div class="post-meta">
-              <h4><a target="_blank" href="https://blog.praveen.science/why-dont-tamil-people-have-last-names/">Why Don’t Tamil People Have Last Names?</a></h4>
-              <div class="category">
-                <span><a>Personal</a></span> <span><a>Tamil Nadu</a></span> <span><a>Tamil</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="blog-post">
-            <div class="thumb zoom-img">
-              <a target="_blank" href="https://blog.praveen.science/an-illustrated-guide-to-useful-command-line-tools/">
-                <img src="https://i.imgur.com/hixPe2A.png" alt="An Illustrated Guide to Useful Command Line Tools" />
-                <div class="date">14th Sep, 2019</div>
-              </a>
-            </div>
-            <div class="post-meta">
-              <h4><a target="_blank" href="https://blog.praveen.science/an-illustrated-guide-to-useful-command-line-tools/">An Illustrated Guide to Useful Command Line Tools</a></h4>
-              <div class="category">
-                <span><a>CLI</a></span> <span><a>Command Line Interface</a></span> <span><a>Command Line</a></span> <span><a>Development</a></span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4">
-          <div class="blog-post">
-            <div class="thumb zoom-img">
-              <a target="_blank" href="https://blog.praveen.science/8-mistakes-i-made-as-a-first-time-ux-manager/">
-                <img src="https://i.imgur.com/42p7ajU.png" alt="8 Mistakes I Made As A First-Time UX Manager" />
-                <div class="date">10th Sep, 2019</div>
-              </a>
-            </div>
-            <div class="post-meta">
-              <h4><a target="_blank" href="https://blog.praveen.science/8-mistakes-i-made-as-a-first-time-ux-manager/">8 Mistakes I Made As A First-Time UX Manager</a></h4>
-              <div class="category">
-                <span><a>UX</a></span> <span><a>Development</a></span> <span><a>Challenge</a></span> <span><a>Solution</a></span> <span><a>Experience</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="blog-quote-box">
-            <p>Work hard to get what you like, otherwise you'll be forced to just like what you get.</p>
-            <p>A person who never made a mistake never tried anything new.</p>
-            <span>- Albert Einstein -</span>
-          </div>
-          <div class="blog-post">
-            <div class="thumb zoom-img">
-              <a target="_blank" href="https://blog.praveen.science/frequently-asked-questions-before-joining-university-of-leicester/">
-                <img src="https://i.imgur.com/lGj8nSZ.jpg" alt="Frequently asked questions before joining University of Leicester" />
-                <div class="date">4th Sep, 2019</div>
-              </a>
-            </div>
-            <div class="post-meta">
-              <h4><a target="_blank" href="https://blog.praveen.science/frequently-asked-questions-before-joining-university-of-leicester/">Frequently asked questions before joining University of Leicester</a></h4>
-              <div class="category">
-                <span><a>UK</a></span> <span><a>United Kingdom</a></span> <span><a>Leicester</a></span> <span><a>Student</a></span> <span><a>Education</a></span> <span><a>Study</a></span> <span><a>University</a></span> <span><a>University of Leicester</a></span> <span><a>Personal</a></span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4">
-          <div class="blog-post">
-            <div class="thumb zoom-img">
-              <a target="_blank" href="https://blog.praveen.science/things-to-do-at-university-of-leicester/">
-                <img src="https://i.imgur.com/Fn3e4cyl.jpg" alt="Things to do at University of Leicester" />
-                <div class="date">22nd Jul, 2019</div>
-              </a>
-            </div>
-            <div class="post-meta">
-              <h4><a target="_blank" href="https://blog.praveen.science/things-to-do-at-university-of-leicester/">Things to do at University of Leicester</a></h4>
-              <div class="category">
-                <span><a>Student</a></span> <span><a>Education</a></span> <span><a>Study</a></span> <span><a>University</a></span> <span><a>University of Leicester</a></span> <span><a>Personal</a></span> <span><a>Leicester</a></span> <span><a>United Kingdom</a></span> <span><a>UK</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="blog-post">
-            <div class="thumb zoom-img">
-              <a target="_blank" href="https://blog.praveen.science/accommodation-stay-in-leicester/">
-                <img src="https://i.imgur.com/b5DIUPDl.jpg" alt="Accommodation & Stay in Leicester" />
-                <div class="date">18th Jul, 2019</div>
-              </a>
-            </div>
-            <div class="post-meta">
-              <h4><a target="_blank" href="https://blog.praveen.science/accommodation-stay-in-leicester/">Accommodation & Stay in Leicester</a></h4>
-              <div class="category">
-                <span><a>Personal</a></span> <span><a>Student</a></span> <span><a>Education</a></span> <span><a>Study</a></span> <span><a>University</a></span> <span><a>University of Leicester</a></span> <span><a>Leicester</a></span> <span><a>United Kingdom</a></span> <span><a>UK</a></span>
-              </div>
-            </div>
-          </div>
-          <div class="blog-post">
-            <div class="thumb zoom-img">
-              <a target="_blank" href="https://blog.praveen.science/university-life-when-you-are-at-leicester/">
-                <img src="https://i.imgur.com/GSywQBHl.jpg" alt="University Life when you are at Leicester" />
-                <div class="date">15th Jul, 2019</div>
-              </a>
-            </div>
-            <div class="post-meta">
-              <h4><a target="_blank" href="https://blog.praveen.science/university-life-when-you-are-at-leicester/">University Life when you are at Leicester</a></h4>
-              <div class="category">
-                <span><a>Student</a></span> <span><a>Education</a></span> <span><a>Study</a></span> <span><a>University</a></span> <span><a>University of Leicester</a></span> <span><a>Personal</a></span> <span><a>Leicester</a></span> <span><a>United Kingdom</a></span> <span><a>UK</a></span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 text-center m-top-50">
-          <a target="_blank" href="https://blog.praveen.science/" class="btn line-btn-dark btn-radius">View All Posts</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</div> -->
-<!--blog section end-->
-
-<!--testimonial section start-->
-<!-- <section class="section-space parallax parallax-testimonial">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="section-title text-center light-txt">
-          <h1 class="title">Testimonials</h1>
-          <div class="sub-title">Look at what people say about me.</div>
-        </div>
-      </div>
-      <div class="col-md-8 col-md-offset-2">
-        <div id="testimonial-list" class="owl-carousel owl-theme text-center light-txt">
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/img/reviews/1.png" alt="" />
-            </div>
-            <p>Awesome guy!!! Amazing at helping and making you understand, runs into a problem and always knows the solution to fixing it. Wow! Definitely am going to work with him again. Highly recommend for any coding issues.</p>
-            <div class="testimonial-meta">
-              Alex Cobos -
-              <span>HackHands</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/img/reviews/2.png" alt="" />
-            </div>
-            <p>Extremely helpful! Would recommend to anyone who is new to web development or computer science in general. Praveen is truly passionate about what he teaches and the information he provides is invaluable.</p>
-            <div class="testimonial-meta">
-              Parth Mathuria -
-              <span>HackHands</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/img/reviews/5.png" alt="" />
-            </div>
-            <p>Praveen was extremely helpful with helping me run my program, and explained exactly why it wasn't working. He was patient as it was my first time using hackhands &amp; would definitely use his help again!</p>
-            <div class="testimonial-meta">
-              Medya -
-              <span>HackHands</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/img/reviews/6.png" alt="" />
-            </div>
-            <p>Praveen was incredibly helpful and even took the time to show me a few tricks and shortcuts to help me be a more efficient developer. I would definitely recommend him as he is determined to work until it is solved.</p>
-            <div class="testimonial-meta">
-              Aliyah Jessa -
-              <span>HackHands</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/img/reviews/3.png" alt="" />
-            </div>
-            <p>The most amazing mentor I've ever met! I wish I knew him personally. Extremely knowledgeable and beyond helpful. He really motivated, and steered me in the best direction. He also sent me helpful information for me to research and read so that I can reach my goal even faster. I can't express how appreciative I am towards his willingness to teach, mentor and more importantly, be a person with a good heart who wants to sincerely and honestly help a novice programmer like me. Thank you!</p>
-            <div class="testimonial-meta">
-              Zebedee Pitterson -
-              <span>HackHands</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/img/reviews/4.png" alt="" />
-            </div>
-            <p>Hands down the best first experience I could possibly have using hack hands! Praveen beyond exceeded expectations, we stuck to a strict budget and when the time was finished Praveen worked an additional 30 minutes at no cost just because he wanted to ensure I got the code that I needed. Praveen is super friendly and very knowledgable on the content, I plan to work with him again and recommend others too as well!</p>
-            <div class="testimonial-meta">
-              Marvin Dore -
-              <span>HackHands</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/img/reviews/1.png" alt="" />
-            </div>
-            <p>I am a learning specialist with 20yrs of experience with giants like GE, Harvard, and united nations- I know a good teacher when I see one -Praveen is the most intelligent, wise and helpful mentor I ever found. he's awesome. I have no words to thank him. he's awesome with algorithms and best practices and his teaching skills are nothing but superb- feeling bad that there are only 5 stars here to rating he's n^5 star guy. God bless him and plural sight.</p>
-            <div class="testimonial-meta">
-              Venkat Senaga Setty -
-              <span>HackHands</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/img/reviews/4.png" alt="" />
-            </div>
-            <p>Praveen was great! Walked me through my work and gave me a great start for my assignment. Honestly, I can't thank him enough! He paused the session when he didn't think I was gaining any value (i.e when I was trying to find the tab to end the session at the end). Definitely recommended!</p>
-            <div class="testimonial-meta">
-              Jonathan Chu -
-              <span>HackHands</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/img/reviews/1.png" alt="" />
-            </div>
-            <p>I presented these guy with a pretty complex javascript problem that involved multiple complex functions. He ran through my code and had it figured out within 20 minutes. Something that i had spend almost 5 hours trying to figure out. Great attitude, really nice.</p>
-            <div class="testimonial-meta">
-              Max -
-              <span>HackHands</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/img/reviews/2.png" alt="" />
-            </div>
-            <p>Praveen was wonderful to work with and was a great first impression as I'm new to HackHands. He understood the brief right away and jumped right in to figure out and solve the issue I was having. I would definitely recommend him and HackHands. Thank you Praveen!</p>
-            <div class="testimonial-meta">
-              Brandon Pence -
-              <span>HackHands</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/img/reviews/1.png" alt="" />
-            </div>
-            <p>Praveen is an absolute pleasure to work with. Seriously shows real passion in his work and you can hear it in his voice too. Lives up to his own words "When passion meets career". Super friendly guy to chat too while working and the information he gives is very valuable. Will definitely work with Praveen again, no doubt.</p>
-            <div class="testimonial-meta">
-              Aman Badhan -
-              <span>HackHands</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-<!--testimonial section end-->
-
-<!--clients section start-->
-<!-- <section class="client-section section-gray" hidden>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="clients-logo">
-          <a href="#" class="client-item"><img src="assets/img/clients/sass.png" alt="Client"></a>
-          <a href="#" class="client-item"><img src="assets/img/clients/envato.png" alt="Client"></a>
-          <a href="#" class="client-item"><img src="assets/img/clients/javascript.png" alt="Client"></a>
-          <a href="#" class="client-item"><img src="assets/img/clients/qunit.png" alt="Client"></a>
-          <a href="#" class="client-item"><img src="assets/img/clients/jquery.png" alt="Client"></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-<!--clients section end-->
-
-<!--contact section start-->
-<div class="section-wrapper contact-promo parallax" id="contact">
-  <section class="section-space p-bot-0">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-title text-center">
-            <h1 class="title">Keep in Touch</h1>
-            <div class="sub-title">Speak to me if you have any questions.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="contact-with-location">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="service-list text-center">
-              <div class="icon">
-                <i class="fa fa-comment"></i></a>
-              </div>
-              <div class="service-info">
-                <h4>Contacting Me</h4>
-                <p>Feel free to talk to me about anything that bothers you. If you need a helping hand, please don't hesitate to contact me. Got a question on the services that I provide? I am just a click away.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8 ">
-            <div class="contact-wrap">
-              <h3 class="text-left m-top-0">Say Hi to Me</h3>
-
-              <form role="form" id="contactForm" class="contact-form" data-toggle="validator">
-                <div id="msgSubmit" class="h3 text-center hidden"></div>
-                <div class="row">
-                  <div class=" col-md-6">
-                    <div class="form-group ">
-                      <input type="text" id="name" class="form-control" placeholder="Name" required data-error="Please enter your name">
-                      <div class="help-block with-errors"></div>
-                    </div>
-                  </div>
-                  <div class=" col-md-6">
-                    <div class="form-group ">
-                      <input type="email" class="email form-control" id="email" placeholder="Email" required data-error="Please enter your email" />
-                      <div class="help-block with-errors"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="controls">
-                    <input type="text" id="msg_subject" class="form-control" placeholder="Subject" required data-error="Please enter your message subject">
-                    <div class="help-block with-errors"></div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="controls">
-                    <textarea id="message" rows="7" placeholder="Message" class="form-control" required data-error="Write your message"></textarea>
-                    <div class="help-block with-errors"></div>
-                  </div>
-                </div>
-                <button type="submit" id="submit" class="btn solid-btn-dark btn-radius">Submit</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--maps start-->
-      <!--<div id="map"></div>-->
-      <!--maps end-->
-    </div>
-  </section>
-</div>
-<!--contact section end-->
-
-<!-- footer start-->
-<footer class="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <span class="copyright wow fadeInUp">Copyright © 2022 <a href="">Prabal Pandey</a></a></span>
-      </div>
-    </div>
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Prabal Pandey</span>
+    <span>Gurugram · <span id="localtime">IST</span></span>
+    <span>Hand-written HTML, CSS and canvas. <a href="https://github.com/kingpingx/New-Portfolio" target="_blank" rel="noopener">Source</a></span>
   </div>
 </footer>
-<!-- footer end-->
 
 <script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
 
-  // for navbar fade in and fade out
-    $(document).ready(function() {
+  /* ---------- Theme toggle ---------- */
+  var themeBtn = document.getElementById('themeBtn');
+  var darkMq = window.matchMedia('(prefers-color-scheme: dark)');
+  function effectiveTheme() {
+    var a = root.getAttribute('data-theme');
+    return a === 'dark' || a === 'light' ? a : (darkMq.matches ? 'dark' : 'light');
+  }
+  function syncThemeIcon() {
+    var dark = effectiveTheme() === 'dark';
+    themeBtn.querySelector('.sun').hidden = !dark;
+    themeBtn.querySelector('.moon').hidden = dark;
+    var label = dark ? 'Switch to light theme' : 'Switch to dark theme';
+    themeBtn.setAttribute('aria-label', label);
+    themeBtn.title = label;
+  }
+  themeBtn.addEventListener('click', function () {
+    var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('pp-theme', next); } catch (e) {}
+    syncThemeIcon();
+  });
+  if (darkMq.addEventListener) darkMq.addEventListener('change', syncThemeIcon);
+  if (window.MutationObserver) new MutationObserver(syncThemeIcon).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  syncThemeIcon();
 
-    $(".navbar").hide(); //Hide the navigation bar first
+  /* ---------- Scroll progress, drawn like a recording bar ---------- */
+  var topBar = document.querySelector('.top'), progTick = false;
+  function progress() {
+    progTick = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    topBar.style.setProperty('--p', max > 0 ? Math.min(1, window.scrollY / max) : 0);
+  }
+  window.addEventListener('scroll', function () { if (!progTick) { progTick = true; requestAnimationFrame(progress); } }, { passive: true });
+  progress();
 
-    $(window).scroll(function() { //Listen for the window's scroll event
-      if (isScrolledAfterElement("#home")) { //if it has scrolled beyond the #content elment
-        $('.navbar').fadeIn(); //Show the navigation bar
-      } else {
-        $('.navbar').fadeOut(); //Else hide it
-      }
-    });
+  /* ---------- Clock: IST, like the timecode burned into a camera feed ---------- */
+  var fmt = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
+  });
+  var tc = document.getElementById('tc'), lt = document.getElementById('localtime');
+  function tick() {
+    var p = {};
+    fmt.formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+    tc.textContent = p.year + '-' + p.month + '-' + p.day + ' ' + p.hour + ':' + p.minute + ':' + p.second + ' IST';
+    lt.textContent = p.hour + ':' + p.minute + ' IST';
+  }
+  tick();
+  setInterval(tick, 1000);
 
-    //Function that returns true if the window has scrolled beyond the given element
-    function isScrolledAfterElement(elem) {
-      var $elem = $(elem);
-      var $window = $(window);
+  /* ---------- Video wall ---------- */
+  var C = { bg: '#10161D', line: '#1B2430', dim: '#3A4755', mid: '#708090', read: '#2A3440', dark: '#0B1015', amber: '#F0A33A', blue: '#9DB4CC', red: '#E5484D' };
+  var MONO = '"JetBrains Mono", Consolas, monospace';
+  var REG = {
+    grid: { top: 0.24, bottom: 0.66, full: 0.92 },
+    solo: { top: 0.2, bottom: 0.8, full: 0.9 }
+  };
 
-      var docViewTop = $window.scrollTop();
-      var docViewBottom = docViewTop + $window.height();
-
-      var elemTop = $elem.offset().top;
-
-      return elemTop < docViewTop;
-    }
-    });
-
-    $(document).ready(function() {
-
-    
-    // for name fade in fade out
-
-    $("#prabal").hide(); //Hide the navigation bar first
-
-    $(window).scroll(function() { //Listen for the window's scroll event
-      if (isScrolledAfterElement("#bio")) { //if it has scrolled beyond the #content elment
-        $('#prabal').fadeIn(); //Show the navigation bar
-      } else {
-        $('#prabal').fadeOut(); //Else hide it
-      }
-    });
-
-    //Function that returns true if the window has scrolled beyond the given element
-    function isScrolledAfterElement(elem) {
-      var $elem = $(elem);
-      var $window = $(window);
-
-      var docViewTop = $window.scrollTop();
-      var docViewBottom = docViewTop + $window.height();
-
-      var elemTop = $elem.offset().top;
-
-      return elemTop < docViewTop;
-    }
-    });
-
-
-
-    // List of sentences
-    var _CONTENT = [ 
-      "Computer Science Student", 
-      "Web Developer",
-      "Python & Django Developer", 
-      "Front End Enthusiast", 
-      "Programming Enthusiast",
-      "Gate Qualified"
-    ];
-
-    // Current sentence being processed
-    var _PART = 0;
-
-    // Character number of the current sentence being processed 
-    var _PART_INDEX = 0;
-
-    // Holds the handle returned from setInterval
-    var _INTERVAL_VAL;
-
-    // Element that holds the text
-    var _ELEMENT = document.querySelector("#text");
-
-    // Cursor element 
-    var _CURSOR = document.querySelector("#cursor");
-
-    // Implements typing effect
-    function Type() { 
-      // Get substring with 1 characater added
-      var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
-      _ELEMENT.innerHTML = text;
-      _PART_INDEX++;
-
-      // If full sentence has been displayed then start to delete the sentence after some time
-      if(text === _CONTENT[_PART]) {
-        // Hide the cursor
-        _CURSOR.style.display = 'none';
-
-        clearInterval(_INTERVAL_VAL);
-        setTimeout(function() {
-          _INTERVAL_VAL = setInterval(Delete, 50);
-        }, 1000);
-      }
-    }
-
-    // Implements deleting effect
-    function Delete() {
-      // Get substring with 1 characater deleted
-      var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
-      _ELEMENT.innerHTML = text;
-      _PART_INDEX--;
-
-      // If sentence has been deleted then start to display the next sentence
-      if(text === '') {
-        clearInterval(_INTERVAL_VAL);
-
-        // If current sentence was last then display the first one, else move to the next
-        if(_PART == (_CONTENT.length - 1))
-          _PART = 0;
-        else
-          _PART++;
-        
-        _PART_INDEX = 0;
-
-        // Start to display the next sentence after some time
-        setTimeout(function() {
-          _CURSOR.style.display = 'inline-block';
-          _INTERVAL_VAL = setInterval(Type, 100);
-        }, 200);
-      }
-    }
-
-    // Start the typing effect on load
-    _INTERVAL_VAL = setInterval(Type, 100);
-
-
-    
-    
-    let section = document.querySelectorAll("section");
-    let menu = document.querySelectorAll("navbar-nav nav li a");
-
-    window.onscroll = () => {
-      section.forEach((i) => {
-        let top = window.scrollY;
-        let offset = i.offsetTop - 150;
-        let height = i.offsetHeight;
-        let id = i.getAttribute("id");
-
-        if (top >= offset && top < offset + height) {
-          menu.forEach((link) => {
-            link.classList.remove("active");
-            document
-              .querySelector("header nav a[href*=" + id + "]")
-              .classList.add("active");
-          });
-        }
-      });
+  function rng(seed) {
+    return function () {
+      seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
     };
-    function reveal() {
-      var reveals = document.querySelectorAll(".reveal");
+  }
+  function dot(ctx, x, y, r, color) { ctx.fillStyle = color; ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); }
+  function clock(sec) { sec = Math.round(sec); return Math.floor(sec / 60) + ':' + (sec % 60 < 10 ? '0' : '') + (sec % 60); }
 
-      for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 150;
-
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add("active");
-        } else {
-          reveals[i].classList.remove("active");
+  var scenes = {
+    // After: one lane per event type, each drained by its own consumer. Before: one mixed queue backs up until the broker is restarted.
+    queue: function () {
+      var r = rng(7), lanes = 5, dots = [], TYPES = [C.mid, C.amber, C.blue], FILL = 8, CYC = 9.2;
+      for (var l = 0; l < lanes; l++) {
+        var sp = 0.15 + r() * 0.1, n = 7 + Math.floor(r() * 4);
+        for (var i = 0; i < n; i++) dots.push({ l: l, o: r(), sp: sp, hot: r() < 0.14 });
+      }
+      function after(ctx, w, h, t, reg, withDlq) {
+        var top = h * reg.top, bottom = h * reg.bottom, end = w - 14;
+        if (withDlq) bottom = top + (bottom - top) * 0.78;
+        var gap = (bottom - top) / (lanes - 1);
+        ctx.lineWidth = 1;
+        for (var l = 0; l < lanes; l++) {
+          var y = Math.round(top + l * gap) + 0.5;
+          ctx.strokeStyle = C.line; ctx.beginPath(); ctx.moveTo(8, y); ctx.lineTo(end, y); ctx.stroke();
+          ctx.fillStyle = C.dim; ctx.fillRect(end, y - 4, 4, 8);
+        }
+        for (var i = 0; i < dots.length; i++) {
+          var d = dots[i];
+          dot(ctx, 8 + ((d.o + t * d.sp) % 1) * (end - 8), top + d.l * gap, d.hot ? 2.6 : 2, d.hot ? C.amber : C.mid);
+        }
+        if (withDlq) {
+          var yd = Math.round(h * reg.bottom) + 0.5;
+          ctx.setLineDash([3, 4]); ctx.strokeStyle = C.dim;
+          ctx.beginPath(); ctx.moveTo(34, yd); ctx.lineTo(end, yd); ctx.stroke(); ctx.setLineDash([]);
+          ctx.fillStyle = C.mid; ctx.font = '500 9px ' + MONO; ctx.textBaseline = 'middle'; ctx.fillText('DLQ', 8, yd);
+          dot(ctx, 34 + ((t * 0.09) % 1) * (end - 34), yd, 2.2, C.red);
         }
       }
+      function before(ctx, w, h, t, reg) {
+        var y = Math.round(h * (reg.top + reg.bottom) / 2) + 0.5, end = w - 14, gap = 5;
+        var maxP = Math.max(4, Math.floor((end - 60) / gap)), tau = t % CYC;
+        var P = tau < FILL ? Math.floor(maxP * tau / FILL) : 0;
+        ctx.strokeStyle = C.line; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(8, y); ctx.lineTo(end, y); ctx.stroke();
+        ctx.fillStyle = C.dim; ctx.fillRect(end, y - 5, 4, 10);
+        var rate = 7, travel = 1.1, speed = (end - 8) / travel, tail = end - 4 - P * gap;
+        for (var k = Math.max(0, Math.floor((tau - travel) * rate)); k <= Math.floor(tau * rate); k++) {
+          var x = 8 + (tau - k / rate) * speed;
+          if (x <= tail) dot(ctx, x, y, 2.1, TYPES[k % 3]);
+        }
+        for (var i = 0; i < P; i++) dot(ctx, end - 4 - i * gap, y, 2.1, TYPES[(i * 7) % 3]);
+        if (tau >= FILL) {
+          ctx.globalAlpha = Math.max(0, 1 - (tau - FILL) / (CYC - FILL));
+          ctx.fillStyle = C.red; ctx.font = '600 11px ' + MONO; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+          ctx.fillText('BROKER RESTART', w / 2, y - 12);
+          ctx.globalAlpha = 1; ctx.textAlign = 'start';
+        }
+      }
+      return {
+        draw: function (ctx, w, h, t, dt, mode, reg) {
+          ctx.fillStyle = C.bg; ctx.fillRect(0, 0, w, h);
+          if (mode === 'before') before(ctx, w, h, t, reg); else after(ctx, w, h, t, reg, mode === 'after');
+        },
+        readout: function (mode, t) {
+          if (mode === 'before') return (t % CYC) < FILL ? 'Throughput 20–30 ev/s · one queue, every event type · backlog growing' : 'Backlog cleared by a broker restart. Again tomorrow.';
+          return 'Throughput 500+ ev/s · backlog 0 · a queue, consumer and DLQ per event type';
+        },
+        rest: function (mode) { return mode === 'before' ? 6.5 : 1.35; }
+      };
+    },
+
+    // Ten report types. Before: one at a time. After: in parallel under a fixed limit. Same 75x time scale for both.
+    export: function () {
+      var r = rng(11), n = 10, dur = [], par = [], seq = [], free = [0, 0, 0, 0], acc = 0;
+      for (var i = 0; i < n; i++) dur.push(0.5 + r() * 0.9);
+      for (i = 0; i < n; i++) {
+        var k = free.indexOf(Math.min.apply(null, free));
+        par.push(free[k]); free[k] += dur[i];
+        seq.push(acc); acc += dur[i];
+      }
+      var parSpan = Math.max.apply(null, free), seqSpan = acc;
+      function plan(mode) {
+        if (mode === 'before') return { st: seq, k: 9.6 / seqSpan, span: 9.6, hold: 2.2 };
+        if (mode === 'after') return { st: par, k: 0.72 / parSpan, span: 0.72, hold: 2.4 };
+        return { st: par, k: 1, span: parSpan, hold: 1.4 };
+      }
+      function prog(p, i, tau) { return Math.min(1, Math.max(0, (tau - p.st[i] * p.k) / (dur[i] * p.k))); }
+      return {
+        draw: function (ctx, w, h, t, dt, mode, reg) {
+          ctx.fillStyle = C.bg; ctx.fillRect(0, 0, w, h);
+          var p = plan(mode), tau = t % (p.span + p.hold);
+          var x0 = w * 0.06, x1 = w * 0.94, top = h * reg.top, bottom = h * reg.bottom;
+          var row = (bottom - top) / n, bh = Math.max(2, row * 0.45);
+          for (var i = 0; i < n; i++) {
+            var y = top + i * row, q = prog(p, i, tau);
+            ctx.fillStyle = C.line; ctx.fillRect(x0, y, x1 - x0, bh);
+            if (q > 0) { ctx.fillStyle = q < 1 ? C.amber : C.dim; ctx.fillRect(x0, y, (x1 - x0) * q, bh); }
+          }
+        },
+        readout: function (mode, t) {
+          var p = plan(mode), tau = t % (p.span + p.hold), done = 0, run = 0;
+          for (var i = 0; i < n; i++) { var q = prog(p, i, tau); if (q >= 1) done++; else if (q > 0) run++; }
+          var time = clock(Math.min(tau, p.span) * 75);
+          return (done === n ? 'All 10 reports done in ' + time : 'Reports ' + done + '/10 · ' + run + ' running · ' + time) + ' · shown at 75× speed';
+        },
+        rest: function (mode) { return plan(mode).span + 0.05; }
+      };
+    },
+
+    // Before: the search reads every block. After: BRIN lets it skip every block range that cannot match.
+    search: function () {
+      var r = rng(23), cols = 30, rows = 8, match = {}, hits = [], nMatch = 0;
+      [[6, 7], [20, 20]].forEach(function (a) { for (var c = a[0]; c <= a[1]; c++) { match[c] = true; nMatch++; } });
+      for (var c = 0; c < cols; c++) for (var k = 0; k < rows; k++) hits.push(!!match[c] && r() < 0.6);
+      var AFTER = 0.58, BEFORE = 6;
+      function readTo(x) {
+        if (x >= nMatch) return cols;
+        for (var c = 0; c < cols; c++) { if (!match[c]) continue; if (x <= 1) return c + x; x -= 1; }
+        return cols;
+      }
+      function state(mode, t) {
+        if (mode === 'before') {
+          var tb = t % (BEFORE + 2.2), fb = Math.min(1, tb / BEFORE);
+          return { sweep: fb * cols, skip: false, read: fb * cols * rows, secs: Math.min(tb, BEFORE) * 5, active: tb < BEFORE };
+        }
+        if (mode === 'after') {
+          var ta = t % (AFTER + 2.4), x = Math.min(nMatch, ta / (AFTER / nMatch));
+          return { sweep: readTo(x), skip: true, read: x * rows, secs: Math.min(ta, AFTER) * 5, active: ta < AFTER };
+        }
+        var f = (t % 3.4) / 2.4;
+        return { sweep: Math.min(1, f) * cols, skip: true, active: f < 1 };
+      }
+      return {
+        draw: function (ctx, w, h, t, dt, mode, reg) {
+          ctx.fillStyle = C.bg; ctx.fillRect(0, 0, w, h);
+          var s = state(mode, t), x0 = w * 0.06, x1 = w * 0.94, top = h * reg.top, bottom = h * reg.bottom;
+          var cw = (x1 - x0) / cols, ch = (bottom - top) / rows, pad = Math.max(1, Math.min(cw, ch) * 0.2);
+          for (var c = 0; c < cols; c++) {
+            for (var k = 0; k < rows; k++) {
+              var col = C.line;
+              if (c < s.sweep) col = match[c] ? (hits[c * rows + k] ? C.amber : C.dim) : (s.skip ? C.dark : C.read);
+              ctx.fillStyle = col;
+              ctx.fillRect(x0 + c * cw + pad / 2, top + k * ch + pad / 2, cw - pad, ch - pad);
+            }
+          }
+          if (s.active) { ctx.fillStyle = 'rgba(240,163,58,.6)'; ctx.fillRect(x0 + s.sweep * cw - 1, top - 4, 2, bottom - top + 8); }
+        },
+        readout: function (mode, t) {
+          var s = state(mode, t);
+          return 'Blocks read ' + Math.floor(s.read) + ' of ' + (cols * rows) + ' · ' + s.secs.toFixed(1) + ' s' + (s.active ? '' : ' · done');
+        },
+        rest: function (mode) { return mode === 'before' ? BEFORE + 0.05 : AFTER + 0.05; }
+      };
+    },
+
+    // 200 servers x 5 cameras. Events light up individual cameras and fade.
+    fleet: function () {
+      var r = rng(5), per = 5, perRow = 10, rowsN = 20, N = per * perRow * rowsN, g = 1.3;
+      var heat = new Float32Array(N);
+      for (var i = 0; i < 48; i++) heat[Math.floor(r() * N)] = 0.3 + r() * 0.7;
+      return {
+        draw: function (ctx, w, h, t, dt, mode, reg) {
+          ctx.fillStyle = C.bg; ctx.fillRect(0, 0, w, h);
+          if (dt) {
+            for (var i = 0; i < N; i++) if (heat[i] > 0) heat[i] = Math.max(0, heat[i] - dt * 0.8);
+            var spawn = Math.floor(dt * 30 + Math.random());
+            for (var s = 0; s < spawn; s++) heat[Math.floor(Math.random() * N)] = 1;
+          }
+          var x0 = w * 0.06, x1 = w * 0.94, top = h * (reg.top - 0.04), bottom = h * reg.full;
+          var U = (perRow - 1) * (per + g) + (per - 1), ux = (x1 - x0) / U, uy = (bottom - top) / (rowsN - 1);
+          var sz = Math.max(1.5, Math.min(ux, uy) * 0.5);
+          for (var j = 0; j < N; j++) {
+            var cam = j % per, srv = Math.floor(j / per), gc = srv % perRow, rr = Math.floor(srv / perRow);
+            var x = x0 + (gc * (per + g) + cam) * ux, y = top + rr * uy, hv = heat[j];
+            ctx.fillStyle = C.dim; ctx.fillRect(x - sz / 2, y - sz / 2, sz, sz);
+            if (hv > 0) {
+              ctx.globalAlpha = hv; ctx.fillStyle = C.amber;
+              var s2 = sz + hv * 1.4; ctx.fillRect(x - s2 / 2, y - s2 / 2, s2, s2);
+              ctx.globalAlpha = 1;
+            }
+          }
+        },
+        readout: function () { return '1,000 cameras · 200 servers · each lit square is an event arriving'; },
+        rest: function () { return 1.35; }
+      };
     }
+  };
 
-    window.addEventListener("scroll", reveal);
+  var INFO = {
+    queue: { title: 'One mixed queue → per-event queues', text: 'Before: every event type shared one RabbitMQ queue. It backed up under load, and the broker needed a restart every day. After: each event type gets its own queue, consumer and dead-letter queue.' },
+    export: { title: 'Report exports, streamed and parallel', text: 'Before: about 12 minutes for 100K+ records. After: rows stream out of PostgreSQL, and reports run in parallel under a fixed limit so the database stays responsive.' },
+    search: { title: '40–50M events in one hypertable', text: 'Before: events sat in separate per-type tables and a search took about 30 seconds. After: one TimescaleDB hypertable with JSONB and BRIN indexes, so a search skips every block range that cannot match.' },
+    fleet: { title: '200+ servers, 1,000+ cameras', text: 'Each square is a camera, grouped in fives by server. A lit square is an event arriving: a detection, a number-plate read, a face match.', noToggle: true }
+  };
 
-    $(document).ready(function () {
-    $('a[href^="#"]').on('click', function (e) {
-        e.preventDefault();
+  var feeds = Array.prototype.map.call(document.querySelectorAll('[data-scene]'), function (el) {
+    var cv = el.querySelector('canvas'), name = el.getAttribute('data-scene');
+    return { el: el, name: name, cam: el.getAttribute('data-cam'), btn: el.querySelector('.open'), cv: cv, ctx: cv.getContext('2d'), scene: scenes[name](), w: 0, h: 0 };
+  });
 
-        var target = this.hash;
-        var $target = $(target);
+  var wall = document.querySelector('.wall'), panel = document.getElementById('solo');
+  var soloTitle = document.getElementById('soloTitle'), soloText = document.getElementById('soloText');
+  var seg = document.getElementById('soloSeg'), readEl = document.getElementById('soloRead'), backBtn = document.getElementById('soloBack');
+  var wallId = document.getElementById('wallId'), wallFoot = document.getElementById('wallFoot');
+  var FOOT_GRID = wallFoot.textContent;
+  var smallMq = window.matchMedia('(max-width: 460px)');
 
-        $('html, body').stop().animate({
-            'scrollTop': $target.offset().top
-        }, 900, 'swing', function () {
-            window.location.hash = target;
-        });
+  var now = 1.35, running = false, prev = 0, onScreen = true;
+  var solo = null, mode = 'after', simT0 = 0, lastRead = 0;
+
+  function region() { return solo ? REG.solo : REG.grid; }
+  // Keep the wall as tall as its 2x2 layout, so opening a feed does not shift the page.
+  function holdWallHeight() {
+    var ar = smallMq.matches ? 3 / 4 : 11 / 16;
+    wall.style.minHeight = solo ? Math.round((wall.clientWidth - 4) * ar + 4) + 'px' : '';
+  }
+  function size(f) {
+    var dpr = Math.min(2, window.devicePixelRatio || 1), b = f.cv.getBoundingClientRect();
+    f.w = b.width; f.h = b.height;
+    f.cv.width = Math.max(1, Math.round(b.width * dpr)); f.cv.height = Math.max(1, Math.round(b.height * dpr));
+    f.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function updateRead(force) {
+    if (!solo) return;
+    var ts = performance.now();
+    if (!force && ts - lastRead < 120) return;
+    lastRead = ts;
+    readEl.textContent = solo.scene.readout(mode, now - simT0);
+  }
+  function paint(dt) {
+    var reg = region();
+    feeds.forEach(function (f) {
+      if (!f.w || !f.h) return;
+      var isSolo = solo === f;
+      f.scene.draw(f.ctx, f.w, f.h, isSolo ? now - simT0 : now, dt, isSolo ? mode : 'ambient', reg);
     });
-});
+    updateRead(false);
+  }
+  function frame(ts) {
+    if (!running) return;
+    var dt = prev ? Math.min(0.05, (ts - prev) / 1000) : 0;
+    prev = ts; now += dt; paint(dt);
+    requestAnimationFrame(frame);
+  }
+  function start() { if (reduce || running || !onScreen || document.hidden) return; running = true; prev = 0; requestAnimationFrame(frame); }
+  function stop() { running = false; }
+  function restart() {
+    if (reduce && solo) simT0 = now - solo.scene.rest(mode); else simT0 = now;
+    paint(0); updateRead(true);
+  }
 
-    function showportf(myvalue){
-      var dname = "pf"+myvalue;
-      var elem = document.getElementById(dname);
-      elem.classList.replace('hidef', 'showf');
-      for (let i = 1; i < 4; i++) {
-        if(i != myvalue){
-          var cname = "pf"+i;
-          var elem = document.getElementById(cname);
-          elem.classList.replace('showf', 'hidef');
-        }
+  function setSeg() {
+    Array.prototype.forEach.call(seg.querySelectorAll('button'), function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-mode') === mode));
+    });
+  }
+  function openSolo(f) {
+    solo = f; mode = 'after';
+    holdWallHeight();
+    wall.classList.add('solo');
+    feeds.forEach(function (g) { g.el.classList.toggle('on', g === f); });
+    var info = INFO[f.name];
+    soloTitle.textContent = info.title;
+    soloText.textContent = info.text;
+    seg.hidden = !!info.noToggle;
+    setSeg();
+    panel.hidden = false;
+    wallId.textContent = 'Wall 01 · ' + f.cam + ' · 1×1';
+    wallFoot.textContent = 'A simulation for illustration. The before and after numbers are from production.';
+    backBtn.focus({ preventScroll: true });
+    restart();
+  }
+  function closeSolo() {
+    var f = solo;
+    solo = null;
+    holdWallHeight();
+    wall.classList.remove('solo');
+    feeds.forEach(function (g) { g.el.classList.remove('on'); });
+    panel.hidden = true;
+    wallId.textContent = 'Wall 01 · 2×2';
+    wallFoot.textContent = FOOT_GRID;
+    if (f) f.btn.focus({ preventScroll: true });
+  }
+  feeds.forEach(function (f) { f.btn.addEventListener('click', function () { openSolo(f); }); });
+  Array.prototype.forEach.call(seg.querySelectorAll('button'), function (b) {
+    b.addEventListener('click', function () { mode = b.getAttribute('data-mode'); setSeg(); restart(); });
+  });
+  backBtn.addEventListener('click', closeSolo);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && solo) closeSolo(); });
+
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(function () { if (solo) holdWallHeight(); feeds.forEach(size); paint(0); });
+    feeds.forEach(function (f) { ro.observe(f.cv); });
+  } else {
+    feeds.forEach(size); paint(0);
+    window.addEventListener('resize', function () { feeds.forEach(size); paint(0); });
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) { onScreen = e[0].isIntersecting; if (onScreen) start(); else stop(); }).observe(wall);
+  }
+  document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+  start();
+
+  /* ---------- Playback timeline ---------- */
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var LAST = 85;
+  var EV = [
+    { m: 0, t: 'Started a B.Tech in Software Engineering', x: 'Maharshi Dayanand University, 2019 to 2023.' },
+    { m: 30, t: 'Top 8 at Microsoft Imagine Cup India', x: 'Reached the pre-finals in February 2022.' },
+    { m: 36, t: 'Joined I2V Systems', x: 'Software Engineer on the video analytics platform: events, dashboards, face recognition.' },
+    { m: 46, t: 'Graduated', x: 'B.Tech in Software Engineering, while already shipping in production.' },
+    { m: 80, t: 'Promoted to Senior Software Engineer', x: 'Leading the Clean Architecture migration, releases and code reviews, and mentoring 4 engineers.' },
+    { m: 84, t: 'Started ThePlayer and PhotoGrouper', x: 'Chrome that plays any camera stream, and offline face grouping for a personal photo library.' }
+  ];
+  function monthLabel(m) { var k = 7 + m; return MONTHS[k % 12] + ' ' + (2019 + Math.floor(k / 12)); }
+  var pbRange = document.getElementById('pbRange'), pbFill = document.getElementById('pbFill'), pbHead = document.getElementById('pbHead');
+  var pbNow = document.getElementById('pbNow'), pbDate = document.getElementById('pbDate'), pbTitle = document.getElementById('pbTitle'), pbText = document.getElementById('pbText');
+  var pbPlay = document.getElementById('pbPlay'), evEls = document.querySelectorAll('.pb-ev');
+  var cur = EV.length - 1, playing = false, playRaf = 0, playTimeout = 0;
+
+  function setMonth(m) {
+    m = Math.max(0, Math.min(LAST, m));
+    var whole = Math.round(m), pct = (m / LAST) * 100;
+    pbRange.value = whole;
+    pbFill.style.width = pct + '%';
+    pbHead.style.left = pct + '%';
+    pbNow.textContent = monthLabel(whole);
+    pbRange.setAttribute('aria-valuetext', monthLabel(whole));
+    var idx = 0;
+    EV.forEach(function (e, i) { if (e.m <= m + 0.001) idx = i; });
+    if (idx !== cur) {
+      cur = idx;
+      pbDate.textContent = monthLabel(EV[idx].m);
+      pbTitle.textContent = EV[idx].t;
+      pbText.textContent = EV[idx].x;
+      Array.prototype.forEach.call(evEls, function (el, i) { el.classList.toggle('on', i === idx); });
     }
-
-
-}
-
-$(".click-phone").click(function() {
-    $(this).replaceWith("9910917727");
-});
-  $(".click-email").click(function() {
-    $(this).replaceWith("i.prabal19" + decodeURIComponent("%40") + "gmail.com");
-})
-
- window.onload = function(){
-      // Get the button that opens the modal
-      var btn = document.querySelectorAll("img.modal-button");
-
-      // All page modals
-      var modals = document.querySelectorAll('.modal');
-
-      // Get the <span> element that closes the modal
-      var spans = document.getElementsByClassName("close");
-
-      // When the user clicks the button, open the modal
-      for (var i = 0; i < btn.length; i++) {
-      btn[i].onclick = function(e) {
-          e.preventDefault();
-          document.getElementById('contact').classList.add('ontop');
-          modal = document.querySelector(e.target.getAttribute("href"));
-          modal.style.display = "block";
-        }
-      }
-
-      // When the user clicks on <span> (x), close the modal
-      for (var i = 0; i < spans.length; i++) {
-      spans[i].onclick = function() {
-           
-          for (var index in modals) {
-            document.getElementById('contact').classList.remove('ontop'); 
-            if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none"; 
-           
-          }
-        }
-      }
-
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-          if (event.target.classList.contains('modal')) {
-          for (var index in modals) {
-            document.getElementById("contact").classList.remove("ontop");
-            if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
-          }
-          }
-      }
+  }
+  function stopPlay() {
+    playing = false;
+    cancelAnimationFrame(playRaf); clearTimeout(playTimeout);
+    pbPlay.textContent = '▶ Play';
+  }
+  function play() {
+    if (playing) { stopPlay(); return; }
+    playing = true;
+    pbPlay.textContent = '❚❚ Pause';
+    var from = +pbRange.value >= LAST ? 0 : +pbRange.value;
+    setMonth(from);
+    if (reduce) {
+      var i = 0;
+      while (i < EV.length && EV[i].m <= from) i++;
+      (function step() {
+        if (!playing) return;
+        if (i >= EV.length) { setMonth(LAST); stopPlay(); return; }
+        setMonth(EV[i++].m);
+        playTimeout = setTimeout(step, 1400);
+      })();
+      return;
     }
+    var t0 = 0, perMonth = 9000 / LAST;
+    (function anim(ts) {
+      if (!playing) return;
+      if (!t0) t0 = ts;
+      var m = from + (ts - t0) / perMonth;
+      setMonth(m);
+      if (m >= LAST) { stopPlay(); return; }
+      playRaf = requestAnimationFrame(anim);
+    })(performance.now());
+  }
+  pbRange.addEventListener('input', function () { stopPlay(); setMonth(+pbRange.value); });
+  pbPlay.addEventListener('click', play);
+  document.getElementById('pbPrev').addEventListener('click', function () {
+    stopPlay();
+    var v = +pbRange.value, target = 0;
+    EV.forEach(function (e) { if (e.m < v) target = e.m; });
+    setMonth(target);
+  });
+  document.getElementById('pbNext').addEventListener('click', function () {
+    stopPlay();
+    var v = +pbRange.value, target = LAST;
+    for (var i = EV.length - 1; i >= 0; i--) if (EV[i].m > v) target = EV[i].m;
+    setMonth(target);
+  });
+
+  /* ---------- Copy email ---------- */
+  var copyBtn = document.getElementById('copyMail'), ADDRESS = 'prabal.pandey.prabal@gmail.com';
+  function copyFallback() {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = ADDRESS; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) { return false; }
+  }
+  function copied(ok) {
+    copyBtn.textContent = ok ? 'Copied' : 'Select and copy';
+    setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800);
+  }
+  copyBtn.addEventListener('click', function () {
+    try {
+      navigator.clipboard.writeText(ADDRESS).then(function () { copied(true); }, function () { copied(copyFallback()); });
+    } catch (e) { copied(copyFallback()); }
+  });
+})();
 </script>
-
 </body>
 </html>
